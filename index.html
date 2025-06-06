@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Agenda Sherlock Rio - Eventos interessantes ou diferentes na cidade do Rio de Janeiro"
+    />
+    <meta
+      name="keywords"
+      content="eventos, Rio de Janeiro, agenda, cultura, lazer"
+    />
+    <meta name="author" content="Sherlock Rio" />
+    <title>Agenda Sherlock Rio</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-SEUCODIGO"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-SEUCODIGO");
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <img
+          src="https://i.imgur.com/M8W30c0.jpeg"
+          alt="Cabeçalho Agenda Sherlock Rio"
+          class="header-image"
+          loading="lazy"
+        />
+        <h1>AGENDA SHERLOCK RIO</h1>
+        <p class="app-description">
+          Eventos interessantes ou diferentes na cidade do Rio de Janeiro
+        </p>
+        <div class="social-icons">
+          <a
+            href="https://www.facebook.com/groups/sherlockrio"
+            target="_blank"
+            class="social-icon"
+            aria-label="Facebook"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a
+            href="https://www.instagram.com/sherlock_rio/"
+            target="_blank"
+            class="social-icon"
+            aria-label="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a
+            href="https://www.youtube.com/@SherlockRio"
+            target="_blank"
+            class="social-icon"
+            aria-label="YouTube"
+            ><i class="fab fa-youtube"></i
+          ></a>
+          <a
+            href="https://abre.ai/zapsherlock"
+            target="_blank"
+            class="social-icon"
+            aria-label="WhatsApp"
+            ><i class="fab fa-whatsapp"></i
+          ></a>
+        </div>
+      </header>
+
+      <div class="filters">
+        <select id="filterDay" aria-label="Filtrar por dia">
+          <option value="">DIA</option>
+          <option value="2a feira">2ª feira</option>
+          <option value="3a feira">3ª feira</option>
+          <option value="4a feira">4ª feira</option>
+          <option value="5a feira">5ª feira</option>
+          <option value="6a feira">6ª feira</option>
+          <option value="Sábado">Sábado</option>
+          <option value="Domingo">Domingo</option>
+        </select>
+        <select id="filterTime" aria-label="Filtrar por horário">
+          <option value="">HORÁRIO</option>
+          <option value="Manhã">Manhã</option>
+          <option value="Tarde">Tarde</option>
+          <option value="Noite">Noite</option>
+        </select>
+        <select id="filterLocation" aria-label="Filtrar por local">
+          <option value="">LOCAL</option>
+          <option value="Zona Sul">Zona Sul</option>
+          <option value="Zona Norte">Zona Norte</option>
+          <option value="Zona Oeste">Zona Oeste</option>
+          <option value="Centro">Centro</option>
+        </select>
+        <select id="filterValue" aria-label="Filtrar por valor">
+          <option value="">VALOR</option>
+          <option value="Pago">Pago</option>
+          <option value="Gratuito">Gratuito</option>
+        </select>
+      </div>
+
+      <div id="searchResults">
+        <div id="eventCarousel" class="carousel"></div>
+        <noscript
+          ><p>
+            Por favor, habilite o JavaScript para visualizar os eventos.
+          </p></noscript
+        >
+      </div>
+
+      <footer class="new-footer">
+        <div id="footerTopLeft" class="footer-section">
+          <img
+            src="https://i.imgur.com/SAidmdv.png"
+            alt="Megafone"
+            id="footerLogo"
+          />
+        </div>
+        <div id="footerTopRight" class="footer-section">
+          <p id="footerInfo">
+            Clicando no filtro LOCAL você verá aqui<br />
+            o principal anunciante da região selecionada
+          </p>
+        </div>
+        <div id="footerBottomLeft" class="footer-section">
+          <p id="footerMapText">
+            Selecione um LOCAL e clique no ícone ⤢<br />no canto do mapa para
+            ver em tela cheia
+          </p>
+        </div>
+        <div id="footerBottomRight" class="footer-section">
+          <img
+            src="https://i.imgur.com/FBIdSTA.png"
+            alt="Ícone de Localização"
+            id="location-icon"
+          />
+          <iframe id="google-maps"></iframe>
+        </div>
+      </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
