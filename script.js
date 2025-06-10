@@ -42,7 +42,7 @@ const eventos = [
   },
 ];
 
-// Dados completos dos anúncios
+// Dados completos dos anúncios (ATUALIZADOS)
 const anuncios = [
   {
     local: "Zona Sul",
@@ -51,12 +51,14 @@ const anuncios = [
     info: [
       "CAFÉ LAMAS",
       "Restaurante tradicional",
-      "R. Marquês de Abrantes, 18A - Flamengo",
+      "Rua Marquês de Abrantes, 18A - Flamengo",
       "Tel: (21) 2556-0799",
       "Diariamente, de 11h à 1h",
     ],
     mapsUrl:
       "https://www.google.com/maps/d/embed?mid=1azF1USX9h-khIPFXslkms8AiUSBgqeU&hl=pt-BR&ehbc=2E312F&ll=-22.972303599999993%2C-43.2033003&z=17",
+    fullMapUrl:
+      "https://www.google.com/maps/d/viewer?mid=1azF1USX9h-khIPFXslkms8AiUSBgqeU", // URL COMPLETO PARA CLIQUE
     site: "https://cafelamas.com.br",
   },
   {
@@ -73,6 +75,8 @@ const anuncios = [
     ],
     mapsUrl:
       "https://www.google.com/maps/d/embed?mid=1NVVMseOxNiiyu49K7YmLJD6VmoSAAZc&hl=pt-BR&ehbc=2E312F",
+    fullMapUrl:
+      "https://www.google.com/maps/d/viewer?mid=1NVVMseOxNiiyu49K7YmLJD6VmoSAAZc", // URL COMPLETO PARA CLIQUE
     site: "https://www.instagram.com/pescadosnabrasa",
   },
   {
@@ -89,6 +93,8 @@ const anuncios = [
     ],
     mapsUrl:
       "https://www.google.com/maps/d/embed?mid=1-c8lNgLYEZ7s0F7wRMn9nayUGlPSZ1s&hl=pt-BR&ehbc=2E312F",
+    fullMapUrl:
+      "https://www.google.com/maps/d/viewer?mid=1-c8lNgLYEZ7s0F7wRMn9nayUGlPSZ1s", // URL COMPLETO PARA CLIQUE
     site: "https://www.instagram.com/alfa_bar_e_cultura",
   },
   {
@@ -104,20 +110,11 @@ const anuncios = [
     ],
     mapsUrl:
       "https://www.google.com/maps/d/embed?mid=1LC-6qKyhMUqzhcZEnW3VageRlIn5Qp0&hl=pt-BR&ehbc=2E312F",
+    fullMapUrl:
+      "https://www.google.com/maps/d/viewer?mid=1LC-6qKyhMUqzhcZEnW3VageRlIn5Qp0", // URL COMPLETO PARA CLIQUE
     site: "https://www.instagram.com/espaco_nutri_luz",
   },
 ];
-
-// Função para rastrear cliques
-function trackClick(eventCategory, eventLabel) {
-  if (typeof gtag !== "undefined") {
-    gtag("event", "click", {
-      event_category: eventCategory,
-      event_label: eventLabel,
-    });
-  }
-  console.log(`Evento rastreado: ${eventCategory} - ${eventLabel}`);
-}
 
 // Função para criar os slides do carrossel
 function criarSlides(eventos, nenhumFiltro = false) {
@@ -196,6 +193,7 @@ function atualizarFooter(localSelecionado) {
   // Reset de estados
   locationIcon.style.display = "block";
   googleMaps.style.display = "none";
+  googleMaps.onclick = null; // Remove evento anterior
 
   if (localSelecionado) {
     const anuncio = anuncios.find((a) => a.local === localSelecionado);
@@ -207,9 +205,7 @@ function atualizarFooter(localSelecionado) {
       // Topo Direito - Informações do anunciante
       footerTopRight.innerHTML = `
               <div class="advertiser-info">
-                  <h4><a href="${
-                    anuncio.site
-                  }" target="_blank" id="advertiser-link">${
+                  <h4><a href="${anuncio.site}" target="_blank">${
         anuncio.info[0]
       }</a></h4>
                   <p><em>${anuncio.info[1]}</em></p><br/>
@@ -221,23 +217,17 @@ function atualizarFooter(localSelecionado) {
           `;
 
       // Inferior Esquerdo - Texto do mapa
-      footerBottomLeft.innerHTML = `Veja no mapa ao lado<br/>outros lugares em ${anuncio.local}<br><small>Cliques são registrados para análise</small>`;
+      footerBottomLeft.innerHTML = `Veja no mapa ao lado<br/>outros lugares em ${anuncio.local}<br/><br/>Clique no canto superior direito <br/>do mapa para ampliá-lo<br/>`;
 
-      // Inferior Direito - Atualizar e mostrar o mapa
+      // INFERIOR DIREITO - SOLUÇÃO DEFINITIVA
       googleMaps.src = anuncio.mapsUrl;
       googleMaps.style.display = "block";
-      locationIcon.style.display = "none";
+      locationIcon.style.display = "none"; // Oculta o ícone
 
-      // Adicionar rastreamento ao link do anunciante
-      const adLink = document.getElementById("advertiser-link");
-      adLink.addEventListener("click", function () {
-        trackClick("Anuncio", anuncio.info[0]);
-      });
-
-      // Adicionar rastreamento ao mapa
-      footerBottomRight.addEventListener("click", function () {
-        trackClick("Mapa", anuncio.local);
-      });
+      // Adiciona evento de clique para abrir mapa completo
+      googleMaps.onclick = function () {
+        window.open(anuncio.fullMapUrl, "_blank");
+      };
 
       return;
     }
