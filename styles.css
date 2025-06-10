@@ -338,12 +338,14 @@ select:focus {
   overflow: hidden;
   border-radius: 8px;
   border: 1px solid #ddd;
+  padding: 5px; /* Novo: espaço para o ícone de expansão */
 }
 
 #location-icon {
+  width: 80px; /* Aumentado de 40px */
+  height: 80px; /* Aumentado de 40px */
+  object-fit: contain;
   position: absolute;
-  width: 40px;
-  height: 40px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -353,10 +355,11 @@ select:focus {
 #google-maps {
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover;
-  display: block;
+  min-height: 80px;
   border: 2px solid #e0e0e0;
   border-radius: 10px;
+  display: block;
+  object-fit: contain; 
 }
 
 /* RESPONSIVO PARA MOBILE */
@@ -380,8 +383,8 @@ select:focus {
   }
 
   #location-icon {
-    width: 30px;
-    height: 30px;
+    width: 60px; 
+    height: 60px; 
   }
 
   #footerTopRight p,
