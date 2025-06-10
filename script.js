@@ -181,7 +181,7 @@ function filtrarEventos() {
   atualizarFooter(local);
 }
 
-// Função para atualizar o footer - VERSÃO FINAL CORRIGIDA
+// Função para atualizar o footer - ATUALIZADA
 function atualizarFooter(localSelecionado) {
   const footerTopLeft = document.getElementById("footerTopLeft");
   const footerTopRight = document.getElementById("footerTopRight");
@@ -192,8 +192,7 @@ function atualizarFooter(localSelecionado) {
 
   // Reset de estados
   locationIcon.style.display = "block";
-  googleMaps.style.display = "none";
-  googleMaps.onclick = null; // Remove evento anterior
+  footerBottomRight.innerHTML = ""; // Limpa conteúdo anterior
 
   if (localSelecionado) {
     const anuncio = anuncios.find((a) => a.local === localSelecionado);
@@ -205,9 +204,7 @@ function atualizarFooter(localSelecionado) {
       // Topo Direito - Informações do anunciante
       footerTopRight.innerHTML = `
               <div class="advertiser-info">
-                  <h4><a href="${anuncio.site}" target="_blank">${
-        anuncio.info[0]
-      }</a></h4>
+                  <h4><a href="${anuncio.site}" target="_blank">${anuncio.info[0]}</a></h4>
                   <p><em>${anuncio.info[1]}</em></p><br/>
                   ${anuncio.info
                     .slice(2)
@@ -219,15 +216,18 @@ function atualizarFooter(localSelecionado) {
       // Inferior Esquerdo - Texto do mapa
       footerBottomLeft.innerHTML = `Veja no mapa ao lado<br/>outros lugares em ${anuncio.local}<br/><br/>Clique no canto superior direito <br/>do mapa para ampliá-lo<br/>`;
 
-      // INFERIOR DIREITO - SOLUÇÃO DEFINITIVA
-      googleMaps.src = anuncio.mapsUrl;
-      googleMaps.style.display = "block";
-      locationIcon.style.display = "none"; // Oculta o ícone
+      // INFERIOR DIREITO - NOVO LINK FUNCIONAL NO MOBILE
+      footerBottomRight.innerHTML = `
+        <a href="${anuncio.fullMapUrl}" target="_blank" rel="noopener noreferrer" class="map-link">
+          <iframe 
+            src="${anuncio.mapsUrl}" 
+            style="width: 100%; height: 100%; border: none; border-radius: 10px;" 
+            allowfullscreen>
+          </iframe>
+        </a>
+      `;
 
-      // Adiciona evento de clique para abrir mapa completo
-      googleMaps.onclick = function () {
-        window.open(anuncio.fullMapUrl, "_blank");
-      };
+      locationIcon.style.display = "none"; // Oculta o ícone
 
       return;
     }
