@@ -181,17 +181,19 @@ function filtrarEventos() {
   atualizarFooter(local);
 }
 
-// Função para atualizar o footer - ATUALIZADA E CORRIGIDA
+// Função para atualizar o footer - VERSÃO FINAL CORRIGIDA
 function atualizarFooter(localSelecionado) {
   const footerTopLeft = document.getElementById("footerTopLeft");
   const footerTopRight = document.getElementById("footerTopRight");
   const footerBottomLeft = document.getElementById("footerBottomLeft");
   const footerBottomRight = document.getElementById("footerBottomRight");
   const locationIcon = document.getElementById("location-icon");
+  const googleMaps = document.getElementById("google-maps");
 
   // Reset de estados
   locationIcon.style.display = "block";
-  footerBottomRight.innerHTML = ""; // Limpa conteúdo anterior
+  googleMaps.style.display = "none";
+  googleMaps.onclick = null; // Remove evento anterior
 
   if (localSelecionado) {
     const anuncio = anuncios.find((a) => a.local === localSelecionado);
@@ -203,7 +205,9 @@ function atualizarFooter(localSelecionado) {
       // Topo Direito - Informações do anunciante
       footerTopRight.innerHTML = `
               <div class="advertiser-info">
-                  <h4><a href="${anuncio.site}" target="_blank">${anuncio.info[0]}</a></h4>
+                  <h4><a href="${anuncio.site}" target="_blank">${
+        anuncio.info[0]
+      }</a></h4>
                   <p><em>${anuncio.info[1]}</em></p><br/>
                   ${anuncio.info
                     .slice(2)
@@ -215,58 +219,40 @@ function atualizarFooter(localSelecionado) {
       // Inferior Esquerdo - Texto do mapa
       footerBottomLeft.innerHTML = `Veja no mapa ao lado<br/>outros lugares em ${anuncio.local}<br/><br/>Clique no canto superior direito <br/>do mapa para ampliá-lo<br/>`;
 
-      // INFERIOR DIREITO - NOVO BOTÃO FUNCIONAL NO MOBILE
-      footerBottomRight.innerHTML = `
-        <div class="map-preview-container">
-          <img src="${anuncio.mapThumbnail}" alt="Mapa da região" class="map-thumbnail" />
-          <button class="open-map-button">🔍 Ver no Google Maps</button>
-        </div>
-      `;
-
-      // Adiciona evento no botão
-      footerBottomRight.querySelector(".open-map-button").addEventListener("click", function () {
-        window.open(anuncio.fullMapUrl, "_blank");
-      });
-
+      // INFERIOR DIREITO - SOLUÇÃO DEFINITIVA
+      googleMaps.src = anuncio.mapsUrl;
+      googleMaps.style.display = "block";
       locationIcon.style.display = "none"; // Oculta o ícone
+
+      // Adiciona evento de clique para abrir mapa completo
+      googleMaps.onclick = function () {
+        window.open(anuncio.fullMapUrl, "_blank");
+      };
 
       return;
     }
   }
 
-  // Reset para footer ESTÁTICO - agora com layout alinhado
-  footerTopLeft.innerHTML = `
-    <div class="static-footer-section">
-      <img src="https://i.imgur.com/SAidmdv.png" alt="Megafone" id="footerLogo">
-    </div>
-  `;
-
-  footerTopRight.innerHTML = `
-    <div class="static-footer-section static-footer-text">
-      <p>Clique no filtro LOCAL para ver</p>
-      <p>os principais anunciantes da região</p>
-    </div>
-  `;
-
-  footerBottomLeft.innerHTML = `
-    <div class="static-footer-section static-footer-text">
-      <p>Selecionando um LOCAL você encontra</p>
-      <p>todos os anunciantes da região</p>
-    </div>
-  `;
-
-  footerBottomRight.innerHTML = `
-    <div class="static-footer-section" style="display: flex; justify-content: center; align-items: center;">
-      <img src="https://sherlockrio.vercel.app/map-placeholder.png" alt="Mapa padrão" style="width: 100%; max-width: 150px; height: auto;" />
-    </div>
-  `;
+  // Reset para footer estático
+  footerTopLeft.innerHTML =
+    '<img src="https://i.imgur.com/SAidmdv.png" alt="Megafone" id="footerLogo">';
+  footerTopRight.innerHTML =
+    "<p>Clique no filtro LOCAL para ver</p><p>os principais anunciantes da região</p>";
+  footerBottomLeft.innerHTML =
+    "<p>Selecionando um LOCAL você encontra</p><p>todos os anunciantes da região</p>";
 }
 
 // Event listeners
 document.getElementById("filterDay").addEventListener("change", filtrarEventos);
-document.getElementById("filterTime").addEventListener("change", filtrarEventos);
-document.getElementById("filterLocation").addEventListener("change", filtrarEventos);
-document.getElementById("filterValue").addEventListener("change", filtrarEventos);
+document
+  .getElementById("filterTime")
+  .addEventListener("change", filtrarEventos);
+document
+  .getElementById("filterLocation")
+  .addEventListener("change", filtrarEventos);
+document
+  .getElementById("filterValue")
+  .addEventListener("change", filtrarEventos);
 
 // Inicialização
 document.addEventListener("DOMContentLoaded", () => {
