@@ -264,15 +264,9 @@ function atualizarFooter(localSelecionado) {
 
 // Event listeners
 document.getElementById("filterDay").addEventListener("change", filtrarEventos);
-document
-  .getElementById("filterTime")
-  .addEventListener("change", filtrarEventos);
-document
-  .getElementById("filterLocation")
-  .addEventListener("change", filtrarEventos);
-document
-  .getElementById("filterValue")
-  .addEventListener("change", filtrarEventos);
+document.getElementById("filterTime").addEventListener("change", filtrarEventos);
+document.getElementById("filterLocation").addEventListener("change", filtrarEventos);
+document.getElementById("filterValue").addEventListener("change", filtrarEventos);
 
 // Inicialização
 document.addEventListener("DOMContentLoaded", () => {
