@@ -214,9 +214,7 @@ select:focus {
   }
 }
 
-/* ========== FIM DO CARROSSEL ========== */
-
-/* FOOTER ESTILIZADO - VERSÃO COMPACTA */
+/* FOOTER ESTILIZADO - VERSÃO FINAL */
 .new-footer {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -364,6 +362,7 @@ select:focus {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
   height: 100%;
   text-align: center;
 }
