@@ -219,23 +219,15 @@ function atualizarFooter(localSelecionado) {
       // Inferior Esquerdo - Texto do mapa
       footerBottomLeft.innerHTML = `Veja no mapa ao lado<br/>outros lugares em ${anuncio.local}<br/><br/>Clique no canto superior direito <br/>do mapa para ampliá-lo<br/>`;
 
-// INFERIOR DIREITO - MINIATURA DO MAPA FUNCIONAL NO CELULAR
-footerBottomRight.innerHTML = `
-  <div class="map-thumbnail-clickable" style="width: 100%; height: 100%; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-    <img src="${anuncio.mapThumbnail}" alt="Mapa da região" style="width: 100%; max-width: 150px; height: auto; border-radius: 8px;" />
-  </div>
-`;
+      // INFERIOR DIREITO - SOLUÇÃO DEFINITIVA
+      googleMaps.src = anuncio.mapsUrl;
+      googleMaps.style.display = "block";
+      locationIcon.style.display = "none"; // Oculta o ícone
 
-const mapDiv = footerBottomRight.querySelector(".map-thumbnail-clickable");
-
-mapDiv.addEventListener("click", function () {
-  window.open(anuncio.fullMapUrl, "_blank");
-});
-
-mapDiv.addEventListener("touchstart", function (e) {
-  e.preventDefault();
-  window.open(anuncio.fullMapUrl, "_blank");
-});
+      // Adiciona evento de clique para abrir mapa completo
+      googleMaps.onclick = function () {
+        window.open(anuncio.fullMapUrl, "_blank");
+      };
 
       return;
     }
