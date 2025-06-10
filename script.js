@@ -181,14 +181,13 @@ function filtrarEventos() {
   atualizarFooter(local);
 }
 
-// Função para atualizar o footer - ATUALIZADA
+// Função para atualizar o footer - ATUALIZADA E CORRIGIDA
 function atualizarFooter(localSelecionado) {
   const footerTopLeft = document.getElementById("footerTopLeft");
   const footerTopRight = document.getElementById("footerTopRight");
   const footerBottomLeft = document.getElementById("footerBottomLeft");
   const footerBottomRight = document.getElementById("footerBottomRight");
   const locationIcon = document.getElementById("location-icon");
-  const googleMaps = document.getElementById("google-maps");
 
   // Reset de estados
   locationIcon.style.display = "block";
@@ -216,16 +215,18 @@ function atualizarFooter(localSelecionado) {
       // Inferior Esquerdo - Texto do mapa
       footerBottomLeft.innerHTML = `Veja no mapa ao lado<br/>outros lugares em ${anuncio.local}<br/><br/>Clique no canto superior direito <br/>do mapa para ampliá-lo<br/>`;
 
-      // INFERIOR DIREITO - NOVO LINK FUNCIONAL NO MOBILE
+      // INFERIOR DIREITO - NOVO BOTÃO FUNCIONAL NO MOBILE
       footerBottomRight.innerHTML = `
-        <a href="${anuncio.fullMapUrl}" target="_blank" rel="noopener noreferrer" class="map-link">
-          <iframe 
-            src="${anuncio.mapsUrl}" 
-            style="width: 100%; height: 100%; border: none; border-radius: 10px;" 
-            allowfullscreen>
-          </iframe>
-        </a>
+        <div class="map-preview-container">
+          <img src="${anuncio.mapThumbnail}" alt="Mapa da região" class="map-thumbnail" />
+          <button class="open-map-button">🔍 Ver no Google Maps</button>
+        </div>
       `;
+
+      // Adiciona evento no botão
+      footerBottomRight.querySelector(".open-map-button").addEventListener("click", function () {
+        window.open(anuncio.fullMapUrl, "_blank");
+      });
 
       locationIcon.style.display = "none"; // Oculta o ícone
 
@@ -233,13 +234,32 @@ function atualizarFooter(localSelecionado) {
     }
   }
 
-  // Reset para footer estático
-  footerTopLeft.innerHTML =
-    '<img src="https://i.imgur.com/SAidmdv.png" alt="Megafone" id="footerLogo">';
-  footerTopRight.innerHTML =
-    "<p>Clique no filtro LOCAL para ver</p><p>os principais anunciantes da região</p>";
-  footerBottomLeft.innerHTML =
-    "<p>Selecionando um LOCAL você encontra</p><p>todos os anunciantes da região</p>";
+  // Reset para footer ESTÁTICO - agora com layout alinhado
+  footerTopLeft.innerHTML = `
+    <div class="static-footer-section">
+      <img src="https://i.imgur.com/SAidmdv.png" alt="Megafone" id="footerLogo">
+    </div>
+  `;
+
+  footerTopRight.innerHTML = `
+    <div class="static-footer-section static-footer-text">
+      <p>Clique no filtro LOCAL para ver</p>
+      <p>os principais anunciantes da região</p>
+    </div>
+  `;
+
+  footerBottomLeft.innerHTML = `
+    <div class="static-footer-section static-footer-text">
+      <p>Selecionando um LOCAL você encontra</p>
+      <p>todos os anunciantes da região</p>
+    </div>
+  `;
+
+  footerBottomRight.innerHTML = `
+    <div class="static-footer-section" style="display: flex; justify-content: center; align-items: center;">
+      <img src="https://sherlockrio.vercel.app/map-placeholder.png" alt="Mapa padrão" style="width: 100%; max-width: 150px; height: auto;" />
+    </div>
+  `;
 }
 
 // Event listeners
