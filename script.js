@@ -227,9 +227,6 @@ function atualizarFooter(localSelecionado) {
       // Criar container para o mapa
       let mapContainer = document.createElement("div");
       mapContainer.className = "map-container";
-      mapContainer.style.position = "relative";
-      mapContainer.style.width = "100%";
-      mapContainer.style.height = "100%";
       
       // Adicionar iframe ao container
       mapContainer.appendChild(googleMaps.cloneNode(true));
@@ -238,22 +235,12 @@ function atualizarFooter(localSelecionado) {
       // Evento para desktop (click)
       mapContainer.addEventListener('click', () => {
         window.open(anuncio.fullMapUrl, "_blank");
-        
-        // Forçar redimensionamento do mapa após abrir
-        setTimeout(() => {
-          window.dispatchEvent(new Event('resize'));
-        }, 100);
       });
       
       // Evento para mobile (touchstart)
       mapContainer.addEventListener('touchstart', (e) => {
         e.preventDefault(); // Prevenir comportamento padrão
         window.open(anuncio.fullMapUrl, "_blank");
-        
-        // Forçar redimensionamento do mapa após abrir
-        setTimeout(() => {
-          window.dispatchEvent(new Event('resize'));
-        }, 100);
       });
 
       return;
