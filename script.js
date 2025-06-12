@@ -226,8 +226,7 @@ function atualizarFooter(localSelecionado) {
 
       // Adiciona evento de clique para abrir mapa completo
       googleMaps.onclick = function () {
-      console.log("URL gerada:", anuncio.fullMapUrl);
-      window.open(anuncio.fullMapUrl, "_self");
+      window.location.href = anuncio.fullMapUrl;
 };
 
       return;
