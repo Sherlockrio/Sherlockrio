@@ -181,7 +181,7 @@ function filtrarEventos() {
   atualizarFooter(local);
 }
 
-// Função para atualizar o footer - VERSÃO CORRIGIDA PARA MOBILE
+// Função para atualizar o footer - VERSÃO FINAL CORRIGIDA
 function atualizarFooter(localSelecionado) {
   const footerTopLeft = document.getElementById("footerTopLeft");
   const footerTopRight = document.getElementById("footerTopRight");
@@ -193,12 +193,7 @@ function atualizarFooter(localSelecionado) {
   // Reset de estados
   locationIcon.style.display = "block";
   googleMaps.style.display = "none";
-  
-  // Limpar event listeners anteriores
-  const oldContainer = document.querySelector(".map-container");
-  if (oldContainer) {
-    oldContainer.remove();
-  }
+  googleMaps.onclick = null; // Remove evento anterior
 
   if (localSelecionado) {
     const anuncio = anuncios.find((a) => a.local === localSelecionado);
@@ -209,39 +204,30 @@ function atualizarFooter(localSelecionado) {
 
       // Topo Direito - Informações do anunciante
       footerTopRight.innerHTML = `
-        <div class="advertiser-info">
-          <h4><a href="${anuncio.site}" target="_blank">${anuncio.info[0]}</a></h4>
-          <p><em>${anuncio.info[1]}</em></p><br/>
-          ${anuncio.info.slice(2).map((info) => `<p>${info}</p>`).join("")}
-        </div>
-      `;
+              <div class="advertiser-info">
+                  <h4><a href="${anuncio.site}" target="_blank">${
+        anuncio.info[0]
+      }</a></h4>
+                  <p><em>${anuncio.info[1]}</em></p><br/>
+                  ${anuncio.info
+                    .slice(2)
+                    .map((info) => `<p>${info}</p>`)
+                    .join("")}
+              </div>
+          `;
 
       // Inferior Esquerdo - Texto do mapa
       footerBottomLeft.innerHTML = `Veja no mapa ao lado<br/>outros lugares em ${anuncio.local}<br/><br/>Clique no canto superior direito <br/>do mapa para ampliá-lo<br/>`;
 
-      // INFERIOR DIREITO - SOLUÇÃO CORRIGIDA PARA MOBILE
+      // INFERIOR DIREITO - SOLUÇÃO DEFINITIVA
       googleMaps.src = anuncio.mapsUrl;
       googleMaps.style.display = "block";
-      locationIcon.style.display = "none";
+      locationIcon.style.display = "none"; // Oculta o ícone
 
-      // Criar container para o mapa
-      let mapContainer = document.createElement("div");
-      mapContainer.className = "map-container";
-      
-      // Adicionar iframe ao container
-      mapContainer.appendChild(googleMaps.cloneNode(true));
-      footerBottomRight.appendChild(mapContainer);
-
-      // Evento para desktop (click)
-      mapContainer.addEventListener('click', () => {
+      // Adiciona evento de clique para abrir mapa completo
+      googleMaps.onclick = function () {
         window.open(anuncio.fullMapUrl, "_blank");
-      });
-      
-      // Evento para mobile (touchstart)
-      mapContainer.addEventListener('touchstart', (e) => {
-        e.preventDefault(); // Prevenir comportamento padrão
-        window.open(anuncio.fullMapUrl, "_blank");
-      });
+      };
 
       return;
     }
@@ -254,8 +240,6 @@ function atualizarFooter(localSelecionado) {
     "<p>Clique no filtro LOCAL para ver</p><p>os principais anunciantes da região</p>";
   footerBottomLeft.innerHTML =
     "<p>Selecionando um LOCAL você encontra</p><p>todos os anunciantes da região</p>";
-  footerBottomRight.innerHTML = "";
-  locationIcon.style.display = "block";
 }
 
 // Event listeners
