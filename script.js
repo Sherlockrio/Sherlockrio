@@ -226,7 +226,7 @@ function atualizarFooter(localSelecionado) {
 
       // Adiciona evento de clique para abrir mapa completo
       googleMaps.onclick = function () {
-      window.location.href = "https://www.google.com/maps/place/Rio+de+Janeiro";
+      window.open("https://www.google.com/maps/place/Rio+de+Janeiro", "_self");
 };
 
       return;
