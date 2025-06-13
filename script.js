@@ -226,7 +226,8 @@ function atualizarFooter(localSelecionado) {
 
       // Adiciona evento de clique para abrir mapa completo
       googleMaps.onclick = function () {
-      window.location.href = "https://www.google.com/maps?q=-22.9068,-43.1729";
+      console.log("URL gerada:", anuncio.mapsUrl); // Exibe a URL no console
+      window.location.href = anuncio.mapsUrl;
 };
 
       return;
