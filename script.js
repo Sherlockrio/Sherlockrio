@@ -188,12 +188,9 @@ function atualizarFooter(localSelecionado) {
   const footerBottomLeft = document.getElementById("footerBottomLeft");
   const footerBottomRight = document.getElementById("footerBottomRight");
   const locationIcon = document.getElementById("location-icon");
-  const googleMaps = document.getElementById("google-maps");
 
   // Reset de estados
   locationIcon.style.display = "block";
-  googleMaps.style.display = "none";
-  googleMaps.onclick = null; // Remove evento anterior
 
   if (localSelecionado) {
     const anuncio = anuncios.find((a) => a.local === localSelecionado);
@@ -219,16 +216,13 @@ function atualizarFooter(localSelecionado) {
       // Inferior Esquerdo - Texto do mapa
       footerBottomLeft.innerHTML = `Veja no mapa ao lado<br/>outros lugares em ${anuncio.local}<br/><br/>Clique no canto superior direito <br/>do mapa para ampliá-lo<br/>`;
 
-      // INFERIOR DIREITO - SOLUÇÃO DEFINITIVA
-      googleMaps.src = anuncio.mapsUrl;
-      googleMaps.style.display = "block";
-      locationIcon.style.display = "none"; // Oculta o ícone
-
-      // Adiciona evento de clique para abrir mapa completo
-      googleMaps.onclick = function () {
-      console.log("URL gerada:", anuncio.mapsUrl); // Exibe a URL no console
-      window.location.href = anuncio.mapsUrl;
-};
+      // INFERIOR DIREITO - Miniatura clicável
+      footerBottomRight.innerHTML = `
+        <a href="${anuncio.local.toLowerCase().replace(' ', '-')}.html" class="map-link">
+          <img src="${anuncio.mapThumbnail}" alt="Anunciantes ${anuncio.local}" class="map-thumbnail">
+        </a>
+      `;
+      locationIcon.style.display = "none";
 
       return;
     }
@@ -241,6 +235,8 @@ function atualizarFooter(localSelecionado) {
     "<p>Clique no filtro LOCAL para ver</p><p>os principais anunciantes da região</p>";
   footerBottomLeft.innerHTML =
     "<p>Selecionando um LOCAL você encontra</p><p>todos os anunciantes da região</p>";
+  footerBottomRight.innerHTML = "";
+  locationIcon.style.display = "block";
 }
 
 // Event listeners
