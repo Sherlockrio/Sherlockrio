@@ -3,28 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anunciantes - Zona Sul</title>
+  <title>Anunciantes - Centro</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Anunciantes - Zona Sul</h1>
+  <header class="region-header">
+    <h1>Anunciantes - Centro</h1>
     <a href="index.html">&larr; Voltar para o app</a>
   </header>
 
   <main>
     <section class="region-map">
-      <img src="https://i.imgur.com/MRmth8W.png" alt="Mapa Zona Sul">
+      <img src="https://i.imgur.com/2Ytp1Jy.png" alt="Mapa Centro">
+      <p>Clique nos estabelecimentos abaixo para ver detalhes</p>
     </section>
 
     <section class="advertisers-list">
-      <div class="advertiser-card" onclick="openAdvertiserModal('cafe-lamas')">
-        <img src="https://cafelamas.com.br/wp-content/uploads/2020/08/cropped-favicon-cafe-lamas-165x165.png" alt="Café Lamas">
-        <h3>CAFÉ LAMAS</h3>
-        <p>Restaurante tradicional</p>
+      <div class="advertiser-card" onclick="openAdvertiserModal('al-farabi')">
+        <img src="https://static.ifood-static.com.br/image/upload/t_thumbnail/logosgde/7602fa23-656e-4c11-9c93-7e6117a914c4/202308101032_Eyd3_i.jpg" alt="Al Farabi">
+        <h3>AL FARABI</h3>
+        <p>Restaurante, botequim e eventos</p>
       </div>
       
-      <!-- Adicione mais anunciantes aqui -->
+      <!-- Adicione mais anunciantes aqui quando necessário -->
     </section>
   </main>
 
@@ -36,18 +37,19 @@
   </div>
 
   <script>
+    // Dados completos dos anunciantes do Centro
     const advertisersData = {
-      'cafe-lamas': {
-        nome: "CAFÉ LAMAS",
-        tipo: "Restaurante tradicional",
-        endereco: "Rua Marquês de Abrantes, 18A - Flamengo",
-        telefone: "(21) 2556-0799",
-        horario: "Diariamente, de 11h à 1h",
-        site: "https://cafelamas.com.br",
-        imagem: "https://cafelamas.com.br/wp-content/uploads/2020/08/cropped-favicon-cafe-lamas-165x165.png",
+      'al-farabi': {
+        nome: "AL FARABI",
+        tipo: "Restaurante, botequim e eventos",
+        endereco: "Rua do Mercado, 34 – Centro",
+        telefone: "(21) 3553-1518",
+        horario: "5a e 6a: 12h às 22h; Sáb e dom: 12h às 20h",
+        site: "https://www.instagram.com/alfa_bar_e_cultura",
+        imagem: "https://static.ifood-static.com.br/image/upload/t_thumbnail/logosgde/7602fa23-656e-4c11-9c93-7e6117a914c4/202308101032_Eyd3_i.jpg",
         fotos: []
       }
-      // Adicione mais anunciantes aqui
+      // Adicione mais anunciantes aqui quando necessário
     };
 
     function openAdvertiserModal(advertiserId) {
@@ -63,8 +65,15 @@
           <p><strong>Endereço:</strong> ${advertiser.endereco}</p>
           <p><strong>Telefone:</strong> ${advertiser.telefone}</p>
           <p><strong>Horário:</strong> ${advertiser.horario}</p>
-          <a href="${advertiser.site}" target="_blank">Visitar site</a>
+          <a href="${advertiser.site}" target="_blank">Visitar Instagram</a>
         </div>
+        
+        ${advertiser.fotos.length ? `
+          <h3>Fotos</h3>
+          <div class="gallery">
+            ${advertiser.fotos.map(foto => `<img src="${foto}" alt="Foto">`).join('')}
+          </div>
+        ` : ''}
       `;
       
       document.getElementById('advertiser-modal').style.display = 'block';
@@ -82,4 +91,4 @@
     }
   </script>
 </body>
-</html>
+</html> 
