@@ -55,11 +55,7 @@ const anuncios = [
       "Tel: (21) 2556-0799",
       "Diariamente, de 11h à 1h",
     ],
-    mapsUrl:
-      "https://www.google.com/maps/d/embed?mid=1azF1USX9h-khIPFXslkms8AiUSBgqeU&hl=pt-BR&ehbc=2E312F&ll=-22.972303599999993%2C-43.2033003&z=17",
-    fullMapUrl:
-      "https://www.google.com/maps/d/viewer?mid=1azF1USX9h-khIPFXslkms8AiUSBgqeU", // URL COMPLETO PARA CLIQUE
-    site: "https://cafelamas.com.br",
+    site: "https://cafelamas.com.br"
   },
   {
     local: "Zona Norte",
@@ -73,11 +69,7 @@ const anuncios = [
       "3ª à sáb de 11h às 21h30",
       "Dom 11h às 18h",
     ],
-    mapsUrl:
-      "https://www.google.com/maps/d/embed?mid=1NVVMseOxNiiyu49K7YmLJD6VmoSAAZc&hl=pt-BR&ehbc=2E312F",
-    fullMapUrl:
-      "https://www.google.com/maps/d/viewer?mid=1NVVMseOxNiiyu49K7YmLJD6VmoSAAZc", // URL COMPLETO PARA CLIQUE
-    site: "https://www.instagram.com/pescadosnabrasa",
+    site: "https://www.instagram.com/pescadosnabrasa"
   },
   {
     local: "Centro",
@@ -91,11 +83,7 @@ const anuncios = [
       "5a e 6a: 12h às 22h;",
       "Sáb e dom: 12h às 20h",
     ],
-    mapsUrl:
-      "https://www.google.com/maps/d/embed?mid=1-c8lNgLYEZ7s0F7wRMn9nayUGlPSZ1s&hl=pt-BR&ehbc=2E312F",
-    fullMapUrl:
-      "https://www.google.com/maps/d/viewer?mid=1-c8lNgLYEZ7s0F7wRMn9nayUGlPSZ1s", // URL COMPLETO PARA CLIQUE
-    site: "https://www.instagram.com/alfa_bar_e_cultura",
+    site: "https://www.instagram.com/alfa_bar_e_cultura"
   },
   {
     local: "Zona Oeste",
@@ -108,11 +96,7 @@ const anuncios = [
       "Tel: (21) 96540-3854",
       "De 4ª à dom em diferentes horários",
     ],
-    mapsUrl:
-      "https://www.google.com/maps/d/embed?mid=1LC-6qKyhMUqzhcZEnW3VageRlIn5Qp0&hl=pt-BR&ehbc=2E312F",
-    fullMapUrl:
-      "https://www.google.com/maps/d/viewer?mid=1LC-6qKyhMUqzhcZEnW3VageRlIn5Qp0", // URL COMPLETO PARA CLIQUE
-    site: "https://www.instagram.com/espaco_nutri_luz",
+    site: "https://www.instagram.com/espaco_nutri_luz"
   },
 ];
 
@@ -181,7 +165,7 @@ function filtrarEventos() {
   atualizarFooter(local);
 }
 
-// Função para atualizar o footer - VERSÃO FINAL CORRIGIDA
+// Função para atualizar o footer - VERSÃO SIMPLIFICADA
 function atualizarFooter(localSelecionado) {
   const footerTopLeft = document.getElementById("footerTopLeft");
   const footerTopRight = document.getElementById("footerTopRight");
@@ -201,24 +185,20 @@ function atualizarFooter(localSelecionado) {
 
       // Topo Direito - Informações do anunciante
       footerTopRight.innerHTML = `
-              <div class="advertiser-info">
-                  <h4><a href="${anuncio.site}" target="_blank">${
-        anuncio.info[0]
-      }</a></h4>
-                  <p><em>${anuncio.info[1]}</em></p><br/>
-                  ${anuncio.info
-                    .slice(2)
-                    .map((info) => `<p>${info}</p>`)
-                    .join("")}
-              </div>
-          `;
+        <div class="advertiser-info">
+          <h4><a href="${anuncio.site}" target="_blank">${anuncio.info[0]}</a></h4>
+          <p><em>${anuncio.info[1]}</em></p><br/>
+          ${anuncio.info.slice(2).map((info) => `<p>${info}</p>`).join("")}
+        </div>
+      `;
 
       // Inferior Esquerdo - Texto do mapa
-      footerBottomLeft.innerHTML = `Veja no mapa ao lado<br/>outros lugares em ${anuncio.local}<br/><br/>Clique no canto superior direito <br/>do mapa para ampliá-lo<br/>`;
+      footerBottomLeft.innerHTML = `Veja todos os anunciantes<br/>da região ${anuncio.local}<br/><br/>Clique na imagem ao lado`;
 
       // INFERIOR DIREITO - Miniatura clicável
+      const paginaRegiao = localSelecionado.toLowerCase().replace(' ', '-') + '.html';
       footerBottomRight.innerHTML = `
-        <a href="${anuncio.local.toLowerCase().replace(' ', '-')}.html" class="map-link">
+        <a href="${paginaRegiao}" class="map-link">
           <img src="${anuncio.mapThumbnail}" alt="Anunciantes ${anuncio.local}" class="map-thumbnail">
         </a>
       `;
