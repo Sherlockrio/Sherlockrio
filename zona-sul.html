@@ -5,6 +5,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anunciantes - Zona Sul</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ESTILOS ADICIONAIS PARA O NOVO LAYOUT */
+    .region-layout {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .advertisers-list {
+      flex: 1;
+    }
+    
+    .region-map {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .map-container {
+      flex-grow: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .map-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .advertiser-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+    }
+    
+    .advertiser-info {
+      flex-grow: 1;
+    }
+    
+    .plus-button {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2c3e50;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0 10px;
+    }
+    
+    /* Estilos para o modal */
+    .modal-content {
+      max-width: 600px;
+    }
+    
+    .info-item {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .instagram-link {
+      display: inline-block;
+      background: #E1306C;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body class="region-page">
   <header class="region-header">
@@ -12,27 +87,39 @@
     <a href="index.html">&larr; Voltar para o app</a>
   </header>
 
-  <main>
-    <section class="region-map">
-      <img src="https://i.imgur.com/MRmth8W.png" alt="Mapa Zona Sul">
-      <!-- FRASE REMOVIDA -->
-    </section>
-
+  <div class="region-layout">
+    <!-- COLUNA ESQUERDA - LISTA DE ANUNCIANTES -->
     <section class="advertisers-list">
-      <div class="advertiser-card" onclick="openAdvertiserModal('cafe-lamas')">
-        <!-- LOGO DO ANUNCIANTE REMOVIDA -->
-        <h3>CAFÉ LAMAS</h3>
-        <p>Restaurante tradicional</p>
+      <div class="advertiser-card" onclick="openAdvertiserModal('lagoa-aventuras')">
+        <div class="advertiser-info">
+          <h3>LAGOA AVENTURAS</h3>
+          <p>Atividades de aventura</p>
+        </div>
+        <button class="plus-button" onclick="event.stopPropagation(); openAdvertiserModal('lagoa-aventuras')">+</button>
       </div>
       
-      <!-- Exemplo de novo anunciante -->
-      <div class="advertiser-card" onclick="openAdvertiserModal('novo-anunciante')">
-        <h3>NOVO RESTAURANTE</h3>
-        <p>Comida italiana</p>
+      <!-- EXEMPLO DE OUTRO ANUNCIANTE -->
+      <div class="advertiser-card" onclick="openAdvertiserModal('cafe-lamas')">
+        <div class="advertiser-info">
+          <h3>CAFÉ LAMAS</h3>
+          <p>Restaurante tradicional</p>
+        </div>
+        <button class="plus-button" onclick="event.stopPropagation(); openAdvertiserModal('cafe-lamas')">+</button>
       </div>
     </section>
-  </main>
+    
+    <!-- COLUNA DIREITA - MAPA DA REGIÃO -->
+    <section class="region-map">
+      <div class="map-container">
+        <img src="https://i.imgur.com/MRmth8W.png" alt="Mapa Zona Sul">
+      </div>
+      <p style="text-align: center; margin-top: 10px; font-size: 14px; color: #666;">
+        Mapa da região Zona Sul - Rio de Janeiro
+      </p>
+    </section>
+  </div>
 
+  <!-- MODAL DE DETALHES -->
   <div id="advertiser-modal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal()">&times;</span>
@@ -41,24 +128,25 @@
   </div>
 
   <script>
-    // Dados completos dos anunciantes da Zona Sul
+    // DADOS ATUALIZADOS DOS ANUNCIANTES
     const advertisersData = {
+      'lagoa-aventuras': {
+        nome: "LAGOA AVENTURAS",
+        tipo: "Parque de aventura",
+        descricao: "Atividades como arvorismo, muro de escalada, etc para adultos e crianças. Também disponível para aniversários.",
+        endereco: "Avenida Epitácio Pessoa 3000 (dentro do Parque da Catacumba, na Lagoa)",
+        telefone: "(21) 4105-0079",
+        horario: "10:00 às 16:00",
+        dias: "Terça a Domingo",
+        instagram: "https://www.instagram.com/lagoaaventuras/"
+      },
       'cafe-lamas': {
         nome: "CAFÉ LAMAS",
         tipo: "Restaurante tradicional",
         endereco: "Rua Marquês de Abrantes, 18A - Flamengo",
         telefone: "(21) 2556-0799",
         horario: "Diariamente, de 11h à 1h",
-        site: "https://cafelamas.com.br",
-        imagem: "https://cafelamas.com.br/wp-content/uploads/2020/08/cropped-favicon-cafe-lamas-165x165.png"
-      },
-      'novo-anunciante': {
-        nome: "NOVO RESTAURANTE",
-        tipo: "Comida italiana",
-        endereco: "Av. Exemplo, 123 - Ipanema",
-        telefone: "(21) 9999-8888",
-        horario: "Terça a Domingo, 12h às 23h",
-        site: "https://novorestaurante.com.br"
+        site: "https://cafelamas.com.br"
       }
     };
 
@@ -66,22 +154,63 @@
       const advertiser = advertisersData[advertiserId];
       const modalContent = document.getElementById('modal-content');
       
-      modalContent.innerHTML = `
+      let htmlContent = `
         <h2>${advertiser.nome}</h2>
         <p><strong>${advertiser.tipo}</strong></p>
         
-        ${advertiser.imagem ? `
-          <img src="${advertiser.imagem}" alt="${advertiser.nome}" style="max-width:100%;border-radius:8px;margin:10px 0;">
-        ` : ''}
-        
-        <div style="background:#f9f9f9;padding:15px;border-radius:8px;margin:15px 0;">
-          <p><strong>Endereço:</strong> ${advertiser.endereco}</p>
-          <p><strong>Telefone:</strong> ${advertiser.telefone}</p>
-          <p><strong>Horário:</strong> ${advertiser.horario}</p>
-          ${advertiser.site ? `<a href="${advertiser.site}" target="_blank">Visitar site</a>` : ''}
-        </div>
+        <div class="info-container">
       `;
       
+      // Adiciona descrição se existir
+      if (advertiser.descricao) {
+        htmlContent += `
+          <div class="info-item">
+            <p>${advertiser.descricao}</p>
+          </div>
+        `;
+      }
+      
+      // Informações padrão
+      htmlContent += `
+          <div class="info-item">
+            <p><strong>Endereço:</strong> ${advertiser.endereco}</p>
+          </div>
+          
+          <div class="info-item">
+            <p><strong>Telefone:</strong> ${advertiser.telefone}</p>
+          </div>
+          
+          <div class="info-item">
+            <p><strong>Horário de Funcionamento:</strong> ${advertiser.horario}</p>
+          </div>
+          
+          <div class="info-item">
+            <p><strong>Dias de funcionamento:</strong> ${advertiser.dias}</p>
+          </div>
+      `;
+      
+      // Links especiais
+      if (advertiser.instagram) {
+        htmlContent += `
+          <div class="info-item">
+            <a href="${advertiser.instagram}" class="instagram-link" target="_blank">
+              Instagram
+            </a>
+          </div>
+        `;
+      }
+      
+      if (advertiser.site) {
+        htmlContent += `
+          <div class="info-item">
+            <a href="${advertiser.site}" target="_blank">Visitar site</a>
+          </div>
+        `;
+      }
+      
+      htmlContent += `</div>`;
+      
+      modalContent.innerHTML = htmlContent;
       document.getElementById('advertiser-modal').style.display = 'block';
     }
 
@@ -97,4 +226,4 @@
     }
   </script>
 </body>
-</html>
+</html> 
