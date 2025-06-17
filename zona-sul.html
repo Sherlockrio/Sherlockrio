@@ -6,7 +6,6 @@
   <title>Anunciantes - Zona Sul</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
 <body class="region-page">
   <header class="region-header">
     <h1>Anunciantes - Zona Sul</h1>
@@ -16,17 +15,21 @@
   <main>
     <section class="region-map">
       <img src="https://i.imgur.com/MRmth8W.png" alt="Mapa Zona Sul">
-      <p>Clique nos estabelecimentos abaixo para ver detalhes</p>
+      <!-- FRASE REMOVIDA -->
     </section>
 
     <section class="advertisers-list">
       <div class="advertiser-card" onclick="openAdvertiserModal('cafe-lamas')">
-        <img src="https://cafelamas.com.br/wp-content/uploads/2020/08/cropped-favicon-cafe-lamas-165x165.png" alt="Café Lamas">
+        <!-- LOGO DO ANUNCIANTE REMOVIDA -->
         <h3>CAFÉ LAMAS</h3>
         <p>Restaurante tradicional</p>
       </div>
       
-      <!-- Adicione mais anunciantes aqui quando necessário -->
+      <!-- Exemplo de novo anunciante -->
+      <div class="advertiser-card" onclick="openAdvertiserModal('novo-anunciante')">
+        <h3>NOVO RESTAURANTE</h3>
+        <p>Comida italiana</p>
+      </div>
     </section>
   </main>
 
@@ -47,10 +50,16 @@
         telefone: "(21) 2556-0799",
         horario: "Diariamente, de 11h à 1h",
         site: "https://cafelamas.com.br",
-        imagem: "https://cafelamas.com.br/wp-content/uploads/2020/08/cropped-favicon-cafe-lamas-165x165.png",
-        fotos: []
+        imagem: "https://cafelamas.com.br/wp-content/uploads/2020/08/cropped-favicon-cafe-lamas-165x165.png"
+      },
+      'novo-anunciante': {
+        nome: "NOVO RESTAURANTE",
+        tipo: "Comida italiana",
+        endereco: "Av. Exemplo, 123 - Ipanema",
+        telefone: "(21) 9999-8888",
+        horario: "Terça a Domingo, 12h às 23h",
+        site: "https://novorestaurante.com.br"
       }
-      // Adicione mais anunciantes aqui quando necessário
     };
 
     function openAdvertiserModal(advertiserId) {
@@ -60,21 +69,17 @@
       modalContent.innerHTML = `
         <h2>${advertiser.nome}</h2>
         <p><strong>${advertiser.tipo}</strong></p>
-        <img src="${advertiser.imagem}" alt="${advertiser.nome}" class="modal-main-img">
         
-        <div class="advertiser-details">
+        ${advertiser.imagem ? `
+          <img src="${advertiser.imagem}" alt="${advertiser.nome}" style="max-width:100%;border-radius:8px;margin:10px 0;">
+        ` : ''}
+        
+        <div style="background:#f9f9f9;padding:15px;border-radius:8px;margin:15px 0;">
           <p><strong>Endereço:</strong> ${advertiser.endereco}</p>
           <p><strong>Telefone:</strong> ${advertiser.telefone}</p>
           <p><strong>Horário:</strong> ${advertiser.horario}</p>
-          <a href="${advertiser.site}" target="_blank">Visitar site</a>
+          ${advertiser.site ? `<a href="${advertiser.site}" target="_blank">Visitar site</a>` : ''}
         </div>
-        
-        ${advertiser.fotos.length ? `
-          <h3>Fotos</h3>
-          <div class="gallery">
-            ${advertiser.fotos.map(foto => `<img src="${foto}" alt="Foto">`).join('')}
-          </div>
-        ` : ''}
       `;
       
       document.getElementById('advertiser-modal').style.display = 'block';
