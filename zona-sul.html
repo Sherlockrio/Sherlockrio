@@ -3,132 +3,546 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anunciantes - Zona Sul</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Zona Sul - Anunciantes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* ESTILOS ADICIONAIS PARA O NOVO LAYOUT */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .region-page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .region-header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #2c3e50;
+    }
+    
+    .region-header h1 {
+      color: #2c3e50;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: #3498db;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    
+    .back-button:hover {
+      background-color: #e1f0fa;
+    }
+    
+    .back-button i {
+      margin-right: 5px;
+    }
+    
     .region-layout {
       display: flex;
-      gap: 20px;
+      gap: 30px;
       margin-top: 20px;
     }
     
-    .advertisers-list {
+    .advertisers-container {
       flex: 1;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
     }
     
-    .region-map {
+    .map-container {
       flex: 1;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
       display: flex;
       flex-direction: column;
     }
     
-    .map-container {
+    .map-header {
+      padding: 15px 20px;
+      background: #2c3e50;
+      color: white;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+    
+    .map-image {
       flex-grow: 1;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      min-height: 400px;
+      background-color: #e0e7ff;
+      background-image: url('https://i.imgur.com/MRmth8W.png');
+      background-size: cover;
+      background-position: center;
     }
     
-    .map-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .map-footer {
+      padding: 10px 15px;
+      background: #f8f9fa;
+      border-top: 1px solid #eee;
+      font-size: 0.85rem;
+      color: #666;
+      text-align: right;
     }
     
-    .advertiser-card {
+    .advertiser-list-header {
+      padding: 15px 20px;
+      background: #2c3e50;
+      color: white;
+      font-weight: 500;
+      font-size: 1.1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px;
-      border-bottom: 1px solid #eee;
+    }
+    
+    .advertiser-count {
+      background: #3498db;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+    }
+    
+    .advertisers-list {
+      padding: 10px 0;
+    }
+    
+    .advertiser-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      border-bottom: 1px solid #f0f0f0;
       cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    .advertiser-item:hover {
+      background-color: #f8f9fa;
     }
     
     .advertiser-info {
       flex-grow: 1;
     }
     
-    .plus-button {
-      font-size: 24px;
-      font-weight: bold;
+    .advertiser-name {
+      font-weight: 600;
+      font-size: 1.1rem;
       color: #2c3e50;
+      margin-bottom: 3px;
+    }
+    
+    .advertiser-description {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    
+    .plus-button {
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: #3498db;
       background: none;
       border: none;
       cursor: pointer;
-      padding: 0 10px;
+      padding: 0 15px;
+      line-height: 1;
     }
     
-    /* Estilos para o modal */
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    
     .modal-content {
+      background: white;
+      border-radius: 10px;
+      width: 90%;
       max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
     }
     
-    .info-item {
-      margin-bottom: 10px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #f0f0f0;
+    .modal-header {
+      background: #2c3e50;
+      color: white;
+      padding: 20px;
+      border-radius: 10px 10px 0 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .modal-subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.8rem;
+      color: white;
+      cursor: pointer;
+      background: none;
+      border: none;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background-color 0.3s;
+    }
+    
+    .close-btn:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .modal-body {
+      padding: 25px;
+    }
+    
+    .info-section {
+      margin-bottom: 20px;
+    }
+    
+    .info-label {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .info-label i {
+      margin-right: 8px;
+      width: 20px;
+      text-align: center;
+    }
+    
+    .info-value {
+      padding-left: 28px;
+      font-size: 1rem;
     }
     
     .instagram-link {
-      display: inline-block;
-      background: #E1306C;
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737);
       color: white;
-      padding: 5px 10px;
+      padding: 8px 15px;
       border-radius: 4px;
       text-decoration: none;
-      margin-top: 10px;
+      font-weight: 500;
+      margin-top: 5px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .instagram-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .instagram-link i {
+      margin-right: 8px;
+      font-size: 1.2rem;
+    }
+    
+    .related-section {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+    
+    .related-title {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+    
+    .related-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    
+    .related-item {
+      background: #f8f9fa;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      position: relative;
+      padding-left: 25px;
+    }
+    
+    .related-item:before {
+      content: "•";
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #3498db;
+      font-size: 1.2rem;
+    }
+    
+    .related-item.highlight {
+      background: #e3f2fd;
+      font-weight: 600;
+    }
+    
+    /* Footer */
+    .dynamic-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #2c3e50;
+      color: white;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+    
+    .footer-text {
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+    
+    .map-thumbnail {
+      width: 80px;
+      height: 50px;
+      border-radius: 4px;
+      border: 2px solid white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      background-color: #e0e7ff;
+      background-image: url('https://i.imgur.com/MRmth8W.png');
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    
+    .map-thumbnail:hover {
+      transform: scale(1.05);
+    }
+    
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .region-layout {
+        flex-direction: column;
+      }
+      
+      .modal-content {
+        width: 95%;
+      }
+      
+      .related-list {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body class="region-page">
   <header class="region-header">
     <h1>Anunciantes - Zona Sul</h1>
-    <a href="index.html">&larr; Voltar para o app</a>
+    <a href="index.html" class="back-button">
+      <i class="fas fa-arrow-left"></i> Voltar para o app
+    </a>
   </header>
 
   <div class="region-layout">
-    <!-- COLUNA ESQUERDA - LISTA DE ANUNCIANTES -->
-    <section class="advertisers-list">
-      <div class="advertiser-card" onclick="openAdvertiserModal('lagoa-aventuras')">
-        <div class="advertiser-info">
-          <h3>LAGOA AVENTURAS</h3>
-          <p>Atividades de aventura</p>
-        </div>
-        <button class="plus-button" onclick="event.stopPropagation(); openAdvertiserModal('lagoa-aventuras')">+</button>
+    <!-- Coluna Esquerda - Lista de Anunciantes -->
+    <div class="advertisers-container">
+      <div class="advertiser-list-header">
+        <span>ANUNCIANTES</span>
+        <span class="advertiser-count">5</span>
       </div>
       
-      <!-- EXEMPLO DE OUTRO ANUNCIANTE -->
-      <div class="advertiser-card" onclick="openAdvertiserModal('cafe-lamas')">
-        <div class="advertiser-info">
-          <h3>CAFÉ LAMAS</h3>
-          <p>Restaurante tradicional</p>
+      <div class="advertisers-list">
+        <div class="advertiser-item" onclick="openAdvertiserModal('lagoa-aventuras')">
+          <div class="advertiser-info">
+            <div class="advertiser-name">LAGOA AVENTURAS</div>
+            <div class="advertiser-description">Atividades de aventura</div>
+          </div>
+          <button class="plus-button" onclick="event.stopPropagation(); openAdvertiserModal('lagoa-aventuras')">+</button>
         </div>
-        <button class="plus-button" onclick="event.stopPropagation(); openAdvertiserModal('cafe-lamas')">+</button>
+        
+        <div class="advertiser-item" onclick="openAdvertiserModal('mirante-urubu')">
+          <div class="advertiser-info">
+            <div class="advertiser-name">A. Epitácio Pessoa</div>
+            <div class="advertiser-description">Mirante do Urubu</div>
+          </div>
+          <button class="plus-button" onclick="event.stopPropagation(); openAdvertiserModal('mirante-urubu')">+</button>
+        </div>
+        
+        <div class="advertiser-item" onclick="openAdvertiserModal('mirante-sacopa')">
+          <div class="advertiser-info">
+            <div class="advertiser-name">A. Epitácio Pessoa</div>
+            <div class="advertiser-description">Mirante Sacopã</div>
+          </div>
+          <button class="plus-button" onclick="event.stopPropagation(); openAdvertiserModal('mirante-sacopa')">+</button>
+        </div>
+        
+        <div class="advertiser-item" onclick="openAdvertiserModal('stradivarius')">
+          <div class="advertiser-info">
+            <div class="advertiser-name">Condomínio de Edifício Stradivarius</div>
+            <div class="advertiser-description">do Luciano</div>
+          </div>
+          <button class="plus-button" onclick="event.stopPropagation(); openAdvertiserModal('stradivarius')">+</button>
+        </div>
+        
+        <div class="advertiser-item" onclick="openAdvertiserModal('ciclovia')">
+          <div class="advertiser-info">
+            <div class="advertiser-name">A. Epitácio Pessoa</div>
+            <div class="advertiser-description">Ciclovia da Lagoa</div>
+          </div>
+          <button class="plus-button" onclick="event.stopPropagation(); openAdvertiserModal('ciclovia')">+</button>
+        </div>
       </div>
-    </section>
+    </div>
     
-    <!-- COLUNA DIREITA - MAPA DA REGIÃO -->
-    <section class="region-map">
-      <div class="map-container">
-        <img src="https://i.imgur.com/MRmth8W.png" alt="Mapa Zona Sul">
+    <!-- Coluna Direita - Mapa da Região -->
+    <div class="map-container">
+      <div class="map-header">MAPA DA REGIÃO - ZONA SUL</div>
+      <div class="map-image"></div>
+      <div class="map-footer">
+        cartográficos ©2025 Google | Temos 50 m L
       </div>
-      <p style="text-align: center; margin-top: 10px; font-size: 14px; color: #666;">
-        Mapa da região Zona Sul - Rio de Janeiro
-      </p>
-    </section>
-  </div>
-
-  <!-- MODAL DE DETALHES -->
-  <div id="advertiser-modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <div id="modal-content"></div>
     </div>
   </div>
 
+  <!-- Modal de Detalhes do Anunciante -->
+  <div id="advertiser-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+        <div class="modal-title" id="modal-nome">LAGOA AVENTURAS</div>
+        <div class="modal-subtitle" id="modal-tipo">Parque de aventura</div>
+      </div>
+      <div class="modal-body">
+        <div class="info-section">
+          <div class="info-label">
+            <i class="fas fa-info-circle"></i> Descrição
+          </div>
+          <div class="info-value" id="modal-descricao">
+            Atividades como arvorismo, muro de escalada, etc para adultos e crianças. Também disponível para aniversários.
+          </div>
+        </div>
+        
+        <div class="info-section">
+          <div class="info-label">
+            <i class="fas fa-map-marker-alt"></i> Endereço
+          </div>
+          <div class="info-value" id="modal-endereco">
+            Avenida Epitácio Pessoa 3000 (dentro do Parque da Catacumba, na Lagoa)
+          </div>
+        </div>
+        
+        <div class="info-section">
+          <div class="info-label">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </div>
+          <div class="info-value" id="modal-telefone">
+            (21) 4105-0079
+          </div>
+        </div>
+        
+        <div class="info-section">
+          <div class="info-label">
+            <i class="far fa-clock"></i> Horário de Funcionamento
+          </div>
+          <div class="info-value" id="modal-horario">
+            10:00 às 16:00
+          </div>
+        </div>
+        
+        <div class="info-section">
+          <div class="info-label">
+            <i class="far fa-calendar-alt"></i> Dias de Funcionamento
+          </div>
+          <div class="info-value" id="modal-dias">
+            Terça a Domingo
+          </div>
+        </div>
+        
+        <div class="info-section">
+          <div class="info-label">
+            <i class="fas fa-hashtag"></i> Instagram
+          </div>
+          <div class="info-value">
+            <a href="https://www.instagram.com/lagoaaventuras/" class="instagram-link" target="_blank" id="modal-instagram">
+              <i class="fab fa-instagram"></i> @lagoaaventuras
+            </a>
+          </div>
+        </div>
+        
+        <div class="related-section">
+          <div class="related-title">Quando você compartilha o livro</div>
+          <div class="related-list" id="modal-related">
+            <div class="related-item">Condomínio de Edifício Lagoa</div>
+            <div class="related-item">Mirante do Urubu</div>
+            <div class="related-item">Mirante Sacopã</div>
+            <div class="related-item highlight">Avaliação Pessoa</div>
+            <div class="related-item highlight">Avaliação Pessoa</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Dinâmico -->
+  <div class="dynamic-footer">
+    <div class="footer-text">
+      cartográficos ©2025 Google | Temos 50 m L
+    </div>
+    <div class="map-thumbnail" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"></div>
+  </div>
+
   <script>
-    // DADOS ATUALIZADOS DOS ANUNCIANTES
+    // Dados completos dos anunciantes
     const advertisersData = {
       'lagoa-aventuras': {
         nome: "LAGOA AVENTURAS",
@@ -138,86 +552,109 @@
         telefone: "(21) 4105-0079",
         horario: "10:00 às 16:00",
         dias: "Terça a Domingo",
-        instagram: "https://www.instagram.com/lagoaaventuras/"
+        instagram: "https://www.instagram.com/lagoaaventuras/",
+        related: [
+          "Condomínio de Edifício Lagoa",
+          "Mirante do Urubu",
+          "Mirante Sacopã",
+          "Avaliação Pessoa",
+          "Avaliação Pessoa"
+        ]
       },
-      'cafe-lamas': {
-        nome: "CAFÉ LAMAS",
-        tipo: "Restaurante tradicional",
-        endereco: "Rua Marquês de Abrantes, 18A - Flamengo",
-        telefone: "(21) 2556-0799",
-        horario: "Diariamente, de 11h à 1h",
-        site: "https://cafelamas.com.br"
+      'mirante-urubu': {
+        nome: "A. Epitácio Pessoa",
+        tipo: "Mirante turístico",
+        descricao: "Mirante com vista panorâmica da Lagoa Rodrigo de Freitas e do Cristo Redentor.",
+        endereco: "Avenida Epitácio Pessoa, próximo ao Parque da Catacumba",
+        telefone: "",
+        horario: "24 horas",
+        dias: "Todos os dias",
+        instagram: "",
+        related: []
+      },
+      'mirante-sacopa': {
+        nome: "A. Epitácio Pessoa",
+        tipo: "Mirante turístico",
+        descricao: "Mirante com vista privilegiada da Lagoa e do Morro Dois Irmãos.",
+        endereco: "Avenida Epitácio Pessoa, altura do Corte do Cantagalo",
+        telefone: "",
+        horario: "24 horas",
+        dias: "Todos os dias",
+        instagram: "",
+        related: []
+      },
+      'stradivarius': {
+        nome: "Condomínio de Edifício Stradivarius",
+        tipo: "Condomínio residencial",
+        descricao: "Condomínio de alto padrão localizado às margens da Lagoa Rodrigo de Freitas.",
+        endereco: "Avenida Epitácio Pessoa, 7200 - Lagoa",
+        telefone: "(21) 2529-1000",
+        horario: "Portaria 24 horas",
+        dias: "Todos os dias",
+        instagram: "",
+        related: []
+      },
+      'ciclovia': {
+        nome: "A. Epitácio Pessoa",
+        tipo: "Ciclovia",
+        descricao: "Ciclovia ao longo da Lagoa Rodrigo de Freitas com 7,5km de extensão.",
+        endereco: "Avenida Epitácio Pessoa, ao longo da Lagoa",
+        telefone: "",
+        horario: "24 horas",
+        dias: "Todos os dias",
+        instagram: "",
+        related: []
       }
     };
 
     function openAdvertiserModal(advertiserId) {
       const advertiser = advertisersData[advertiserId];
-      const modalContent = document.getElementById('modal-content');
       
-      let htmlContent = `
-        <h2>${advertiser.nome}</h2>
-        <p><strong>${advertiser.tipo}</strong></p>
-        
-        <div class="info-container">
-      `;
+      // Atualizar o modal com os dados do anunciante
+      document.getElementById('modal-nome').textContent = advertiser.nome;
+      document.getElementById('modal-tipo').textContent = advertiser.tipo;
+      document.getElementById('modal-descricao').textContent = advertiser.descricao;
+      document.getElementById('modal-endereco').textContent = advertiser.endereco;
+      document.getElementById('modal-telefone').textContent = advertiser.telefone || "Não informado";
+      document.getElementById('modal-horario').textContent = advertiser.horario;
+      document.getElementById('modal-dias').textContent = advertiser.dias;
       
-      // Adiciona descrição se existir
-      if (advertiser.descricao) {
-        htmlContent += `
-          <div class="info-item">
-            <p>${advertiser.descricao}</p>
-          </div>
-        `;
-      }
-      
-      // Informações padrão
-      htmlContent += `
-          <div class="info-item">
-            <p><strong>Endereço:</strong> ${advertiser.endereco}</p>
-          </div>
-          
-          <div class="info-item">
-            <p><strong>Telefone:</strong> ${advertiser.telefone}</p>
-          </div>
-          
-          <div class="info-item">
-            <p><strong>Horário de Funcionamento:</strong> ${advertiser.horario}</p>
-          </div>
-          
-          <div class="info-item">
-            <p><strong>Dias de funcionamento:</strong> ${advertiser.dias}</p>
-          </div>
-      `;
-      
-      // Links especiais
+      // Atualizar link do Instagram
+      const instagramLink = document.getElementById('modal-instagram');
       if (advertiser.instagram) {
-        htmlContent += `
-          <div class="info-item">
-            <a href="${advertiser.instagram}" class="instagram-link" target="_blank">
-              Instagram
-            </a>
-          </div>
-        `;
+        instagramLink.href = advertiser.instagram;
+        instagramLink.style.display = "inline-flex";
+      } else {
+        instagramLink.style.display = "none";
       }
       
-      if (advertiser.site) {
-        htmlContent += `
-          <div class="info-item">
-            <a href="${advertiser.site}" target="_blank">Visitar site</a>
-          </div>
-        `;
+      // Atualizar itens relacionados
+      const relatedContainer = document.getElementById('modal-related');
+      relatedContainer.innerHTML = '';
+      
+      if (advertiser.related && advertiser.related.length > 0) {
+        advertiser.related.forEach((item, index) => {
+          const div = document.createElement('div');
+          div.className = 'related-item';
+          if (item.includes("Avaliação")) {
+            div.classList.add('highlight');
+          }
+          div.textContent = item;
+          relatedContainer.appendChild(div);
+        });
+      } else {
+        relatedContainer.innerHTML = '<div class="info-value">Nenhum item relacionado</div>';
       }
       
-      htmlContent += `</div>`;
-      
-      modalContent.innerHTML = htmlContent;
-      document.getElementById('advertiser-modal').style.display = 'block';
+      // Exibir o modal
+      document.getElementById('advertiser-modal').style.display = 'flex';
     }
 
     function closeModal() {
       document.getElementById('advertiser-modal').style.display = 'none';
     }
 
+    // Fechar modal ao clicar fora do conteúdo
     window.onclick = function(event) {
       const modal = document.getElementById('advertiser-modal');
       if (event.target === modal) {
@@ -226,4 +663,4 @@
     }
   </script>
 </body>
-</html> 
+</html>
