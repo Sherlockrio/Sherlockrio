@@ -9,44 +9,48 @@
     <style>
         /* ===== ESTILOS BASE ===== */
         body {
-            background-color: #333232;
+            background-color: #222; /* Fundo preto fosco */
             color: #f0f0f0;
             font-family: "Roboto", sans-serif;
             margin: 0;
-            padding: 30px 0;
+            padding: 0;
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
         }
 
-        /* Container principal */
+        /* Container principal - 600px como na tela inicial */
         .main-container {
-            width: 70%;
-            max-width: 450px;
-            margin: 0 auto;
+            width: 90%;
+            max-width: 600px;
+            background-color: #222; /* Preto fosco */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Sombra neon verde */
+            margin: 20px auto;
         }
 
-        /* Banner ZONA SUL - VERDE (mantido) */
+        /* Banner ZONA SUL - Verde */
         .banner {
-            background: #006400; /* Verde escuro mantido */
+            background: #006400; /* Verde escuro */
             color: white;
             text-align: center;
             padding: 12px 0;
             margin: 0 auto 20px;
-            border-radius: 0 0 8px 8px;
+            border-radius: 8px;
             position: relative;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         .banner h1 {
             font-size: 1.7rem;
             letter-spacing: 1px;
             text-transform: uppercase;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
             font-weight: 700;
             margin: 0;
             padding: 0 10px;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.7); /* Efeito neon verde */
         }
 
         /* Conteúdo com largura igual ao cabeçalho */
@@ -56,12 +60,12 @@
 
         /* Mapa */
         .map-container {
-            background-color: #30082d;
+            background-color: #30082d; /* Roxo */
             padding: 10px;
             border-radius: 8px;
             text-align: center;
             margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         .map {
@@ -93,11 +97,12 @@
 
         /* Lista de anunciantes */
         .advertisers-container {
-            background-color: white;
+            background-color: #222; /* Preto fosco */
             border-radius: 8px;
             overflow: hidden;
             margin-top: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border: 1px solid #333; /* Borda sutil */
         }
 
         .advertiser-header {
@@ -118,6 +123,7 @@
             gap: 8px;
             font-weight: 700;
             margin: 0;
+            text-shadow: 0 0 3px rgba(0, 255, 0, 0.5); /* Efeito neon verde */
         }
 
         .back-to-app {
@@ -133,7 +139,8 @@
         }
 
         .back-to-app:hover {
-            opacity: 0.9;
+            opacity: 0.8;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
         }
 
         .advertisers-list {
@@ -145,13 +152,17 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 12px;
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid #333; /* Linha divisória mais escura */
             cursor: pointer;
             transition: background-color 0.2s;
         }
 
+        .advertiser-item:last-child {
+            border-bottom: none;
+        }
+
         .advertiser-item:hover {
-            background-color: #f9f9f9;
+            background-color: #2a2a2a; /* Fundo mais claro ao passar mouse */
         }
 
         .advertiser-info {
@@ -160,14 +171,14 @@
 
         /* Fonte roxa para lista de anunciantes */
         .advertiser-name {
-            color: #30082d; /* Roxo */
+            color: #a18fa9; /* Roxo claro para melhor contraste */
             font-weight: 700;
             font-size: 0.95rem;
             margin-bottom: 3px;
         }
 
         .advertiser-description {
-            color: #666;
+            color: #999; /* Cinza claro */
             font-size: 0.8rem;
             font-weight: 500;
         }
@@ -175,7 +186,7 @@
         .plus-button {
             background: none;
             border: none;
-            color: #30082d; /* Roxo */
+            color: #a18fa9; /* Roxo claro */
             font-size: 1.25rem;
             width: 24px;
             height: 24px;
@@ -190,6 +201,8 @@
 
         .plus-button:hover {
             transform: scale(1.15);
+            color: #d0b0da; /* Roxo mais claro no hover */
+            text-shadow: 0 0 5px rgba(161, 143, 169, 0.5);
         }
 
         /* Footer */
@@ -201,25 +214,26 @@
             border-radius: 8px;
             margin-top: 20px;
             font-size: 0.8rem;
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
         }
 
-        /* Modal de detalhes - FUNDO CINZA E FONTE ROXA */
+        /* Modal de detalhes - FUNDO #222 E FONTE ROXA */
         .detalhes-anunciante {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 90%;
-            max-width: 450px;
+            max-width: 600px; /* Mesma largura máxima do container */
             max-height: 85vh;
             overflow-y: auto;
-            background-color: #333232; /* Cinza chumbo */
+            background-color: #222; /* Preto fosco */
             border-radius: 10px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.7); /* Sombra neon verde */
             z-index: 1000;
             display: none;
             color: #f0f0f0; /* Texto claro */
+            border: 1px solid #333;
         }
 
         .detalhes-header {
@@ -230,12 +244,14 @@
             justify-content: space-between;
             align-items: center;
             border-radius: 10px 10px 0 0;
+            border-bottom: 2px solid #30082d; /* Listra roxa */
         }
 
         .detalhes-header h2 {
             font-size: 1.15rem;
             margin: 0;
             font-weight: 700;
+            text-shadow: 0 0 3px rgba(0, 255, 0, 0.5); /* Efeito neon */
         }
 
         .fechar-detalhes {
@@ -251,6 +267,7 @@
 
         .fechar-detalhes:hover {
             transform: rotate(90deg);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
         }
 
         .detalhes-content {
@@ -261,7 +278,7 @@
         .detalhes-content h3 {
             color: #a18fa9; /* Roxo claro */
             margin-bottom: 10px;
-            border-bottom: 1px solid #555;
+            border-bottom: 1px solid #333;
             padding-bottom: 6px;
             font-size: 1.05rem;
             font-weight: 700;
@@ -280,7 +297,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.85);
             z-index: 999;
             display: none;
         }
@@ -288,7 +305,8 @@
         /* Responsividade */
         @media (max-width: 768px) {
             .main-container {
-                width: 85%;
+                width: 90%;
+                padding: 15px;
             }
             
             .banner h1 {
@@ -306,11 +324,13 @@
 
         @media (max-width: 480px) {
             body {
-                padding: 20px 0;
+                padding: 10px 0;
             }
             
             .main-container {
-                width: 92%;
+                width: 95%;
+                padding: 12px;
+                margin: 10px auto;
             }
             
             .banner h1 {
@@ -341,12 +361,16 @@
             .advertiser-description {
                 font-size: 0.75rem;
             }
+
+            .detalhes-anunciante {
+                width: 95%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="main-container">
-        <!-- Banner mantido em verde -->
+        <!-- Banner em verde -->
         <div class="banner">
             <h1>ZONA SUL</h1>
         </div>
@@ -361,7 +385,7 @@
                 </div>
             </div>
 
-            <!-- Lista de anunciantes com fonte roxa e listra roxa -->
+            <!-- Lista de anunciantes com fonte roxa -->
             <div class="advertisers-container">
                 <div class="advertiser-header">
                     <h2><i class="fas fa-store"></i> ANUNCIANTES</h2>
