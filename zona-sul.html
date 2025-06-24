@@ -9,48 +9,44 @@
     <style>
         /* ===== ESTILOS BASE ===== */
         body {
-            background-color: #222;
+            background-color: #333232;
             color: #f0f0f0;
             font-family: "Roboto", sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 30px 0;
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
         }
 
         /* Container principal */
         .main-container {
-            width: 90%;
-            max-width: 600px;
-            background-color: #222;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-            margin: 20px auto;
+            width: 70%;
+            max-width: 450px;
+            margin: 0 auto;
         }
 
-        /* Banner ZONA SUL - Verde */
+        /* Banner ZONA SUL - VERDE (mantido) */
         .banner {
-            background: #006400;
+            background: #006400; /* Verde escuro mantido */
             color: white;
             text-align: center;
             padding: 12px 0;
             margin: 0 auto 20px;
-            border-radius: 8px;
+            border-radius: 0 0 8px 8px;
             position: relative;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         .banner h1 {
             font-size: 1.7rem;
             letter-spacing: 1px;
             text-transform: uppercase;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
             font-weight: 700;
             margin: 0;
             padding: 0 10px;
-            text-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
         }
 
         /* Conteúdo com largura igual ao cabeçalho */
@@ -65,7 +61,7 @@
             border-radius: 8px;
             text-align: center;
             margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .map {
@@ -82,25 +78,37 @@
             border-radius: 6px;
         }
 
-        /* Lista de anunciantes - FUNDO BRANCO COM FONTE ROXA MAIS CLARA */
+        .map-title {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background-color: rgba(0, 100, 0, 0.85); /* Verde */
+            color: white;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Lista de anunciantes */
         .advertisers-container {
             background-color: white;
             border-radius: 8px;
             overflow: hidden;
             margin-top: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            border: 1px solid #ddd;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
 
         .advertiser-header {
-            background-color: #006400;
+            background-color: #006400; /* Verde */
             color: white;
             padding: 10px 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             height: 48px;
-            border-bottom: 2px solid #30082d;
+            border-bottom: 2px solid #30082d; /* Listra roxa */
         }
 
         .advertiser-header h2 {
@@ -110,7 +118,6 @@
             gap: 8px;
             font-weight: 700;
             margin: 0;
-            text-shadow: 0 0 3px rgba(0, 255, 0, 0.5);
         }
 
         .back-to-app {
@@ -126,13 +133,11 @@
         }
 
         .back-to-app:hover {
-            opacity: 0.8;
-            text-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
+            opacity: 0.9;
         }
 
         .advertisers-list {
             padding: 4px 0;
-            background-color: white;
         }
 
         .advertiser-item {
@@ -140,27 +145,22 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 12px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #e0e0e0;
             cursor: pointer;
             transition: background-color 0.2s;
-            background-color: white;
-        }
-
-        .advertiser-item:last-child {
-            border-bottom: none;
         }
 
         .advertiser-item:hover {
-            background-color: #f8f8f8;
+            background-color: #f9f9f9;
         }
 
         .advertiser-info {
             flex: 1;
         }
 
-        /* Roxo mais claro - #7e3c78 */
+        /* Fonte roxa para lista de anunciantes */
         .advertiser-name {
-            color: #7e3c78; /* Roxo mais claro */
+            color: #30082d; /* Roxo */
             font-weight: 700;
             font-size: 0.95rem;
             margin-bottom: 3px;
@@ -175,7 +175,7 @@
         .plus-button {
             background: none;
             border: none;
-            color: #7e3c78; /* Roxo mais claro */
+            color: #30082d; /* Roxo */
             font-size: 1.25rem;
             width: 24px;
             height: 24px;
@@ -190,55 +190,52 @@
 
         .plus-button:hover {
             transform: scale(1.15);
-            color: #9d5b98;
         }
 
         /* Footer */
         .footer {
             text-align: center;
             padding: 12px;
-            background-color: #006400;
+            background-color: #006400; /* Verde */
             color: white;
             border-radius: 8px;
             margin-top: 20px;
             font-size: 0.8rem;
-            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        /* Modal de detalhes - FONTE ROXA MAIS CLARA */
+        /* Modal de detalhes - FUNDO CINZA E FONTE ROXA */
         .detalhes-anunciante {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 90%;
-            max-width: 600px;
+            max-width: 450px;
             max-height: 85vh;
             overflow-y: auto;
-            background-color: white;
+            background-color: #333232; /* Cinza chumbo */
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
             z-index: 1000;
             display: none;
-            color: #333;
+            color: #f0f0f0; /* Texto claro */
         }
 
         .detalhes-header {
-            background-color: #006400;
+            background-color: #006400; /* Verde */
             color: white;
             padding: 12px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-radius: 10px 10px 0 0;
-            border-bottom: 2px solid #30082d;
         }
 
         .detalhes-header h2 {
             font-size: 1.15rem;
             margin: 0;
             font-weight: 700;
-            text-shadow: 0 0 3px rgba(0, 255, 0, 0.5);
         }
 
         .fechar-detalhes {
@@ -254,19 +251,17 @@
 
         .fechar-detalhes:hover {
             transform: rotate(90deg);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
         }
 
         .detalhes-content {
             padding: 12px 15px;
             line-height: 1.6;
-            background-color: white;
         }
 
         .detalhes-content h3 {
-            color: #7e3c78; /* Roxo mais claro */
+            color: #a18fa9; /* Roxo claro */
             margin-bottom: 10px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #555;
             padding-bottom: 6px;
             font-size: 1.05rem;
             font-weight: 700;
@@ -274,7 +269,7 @@
 
         .detalhes-content p {
             margin-bottom: 10px;
-            color: #000;
+            color: #f0f0f0; /* Texto claro */
             font-size: 0.85rem;
             line-height: 1.5;
         }
@@ -285,7 +280,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
+            background-color: rgba(0, 0, 0, 0.8);
             z-index: 999;
             display: none;
         }
@@ -293,8 +288,7 @@
         /* Responsividade */
         @media (max-width: 768px) {
             .main-container {
-                width: 90%;
-                padding: 15px;
+                width: 85%;
             }
             
             .banner h1 {
@@ -312,13 +306,11 @@
 
         @media (max-width: 480px) {
             body {
-                padding: 10px 0;
+                padding: 20px 0;
             }
             
             .main-container {
-                width: 95%;
-                padding: 12px;
-                margin: 10px auto;
+                width: 92%;
             }
             
             .banner h1 {
@@ -349,35 +341,31 @@
             .advertiser-description {
                 font-size: 0.75rem;
             }
-
-            .detalhes-anunciante {
-                width: 95%;
-            }
         }
     </style>
 </head>
 <body>
     <div class="main-container">
-        <!-- Banner em verde -->
+        <!-- Banner mantido em verde -->
         <div class="banner">
             <h1>ZONA SUL</h1>
         </div>
 
         <div class="content-container">
-            <!-- Mapa sem o texto "BAIRROS DA ZONA SUL" -->
+            <!-- Mapa -->
             <div class="map-container">
                 <div class="map-overlay">
+                    <div class="map-title">BAIRROS DA ZONA SUL</div>
                     <img src="https://images.unsplash.com/photo-1591311630200-ffa9120a540f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=600&q=80" 
                          alt="Mapa da Zona Sul do Rio de Janeiro" class="map">
                 </div>
             </div>
 
-            <!-- Lista de anunciantes com fundo branco e fonte roxa mais clara -->
+            <!-- Lista de anunciantes com fonte roxa e listra roxa -->
             <div class="advertisers-container">
                 <div class="advertiser-header">
                     <h2><i class="fas fa-store"></i> ANUNCIANTES</h2>
-                    <!-- Link para a tela inicial do app -->
-                    <a href="https://sherlockrio.vercel.app" class="back-to-app">
+                    <a href="index.html" class="back-to-app">
                         <i class="fas fa-arrow-left"></i> <span>Voltar para o app</span>
                     </a>
                 </div>
@@ -590,6 +578,12 @@
                 fecharDetalhes();
             }
         });
+        
+        // Simular clique no "Voltar para o app"
+        document.querySelector('.back-to-app').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Voltando para o aplicativo principal...');
+        });
     </script>
 </body>
-</html>
+</html> 
