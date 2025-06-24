@@ -9,7 +9,7 @@
     <style>
         /* ===== ESTILOS BASE ===== */
         body {
-            background-color: #30082d; /* Fundo roxo */
+            background-color: #000; /* TELA PRETA */
             color: #f0f0f0;
             font-family: "Roboto", sans-serif;
             margin: 0;
@@ -20,15 +20,15 @@
             align-items: center;
         }
 
-        /* Container principal com mais espaço lateral */
+        /* Container principal com fundo roxo e mais espaço lateral */
         .main-container {
             width: 90%;
             max-width: 600px;
-            background-color: #222;
-            padding: 30px; /* Espaço interno aumentado */
+            background-color: #30082d; /* FUNDO DA PÁGINA ROXO */
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-            margin: 30px auto; /* Espaço externo aumentado */
+            margin: 30px auto;
         }
 
         /* Banner ZONA SUL - Verde com borda branca */
@@ -37,11 +37,11 @@
             color: white;
             text-align: center;
             padding: 12px 0;
-            margin: 0 auto 30px; /* Espaço abaixo aumentado */
+            margin: 0 auto 30px;
             border-radius: 8px;
             position: relative;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            border: 2px solid white; /* Borda branca */
+            border: 2px solid white;
         }
 
         .banner h1 {
@@ -50,7 +50,7 @@
             text-transform: uppercase;
             font-weight: 700;
             margin: 0;
-            padding: 0 20px; /* Mais espaço lateral */
+            padding: 0 20px;
             text-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
         }
 
@@ -65,7 +65,7 @@
             padding: 10px;
             border-radius: 8px;
             text-align: center;
-            margin-bottom: 30px; /* Espaço abaixo aumentado */
+            margin-bottom: 30px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
@@ -75,7 +75,7 @@
             border-radius: 6px;
             display: block;
             margin: 0 auto;
-            border: 4px solid #a44f30; /* Borda laranja mais espessa */
+            border: 4px solid #a44f30;
             box-sizing: border-box;
         }
 
@@ -90,7 +90,7 @@
             background-color: white;
             border-radius: 8px;
             overflow: hidden;
-            margin-top: 30px; /* Espaço acima aumentado */
+            margin-top: 30px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             border: 1px solid #ddd;
         }
@@ -98,12 +98,12 @@
         .advertiser-header {
             background-color: #006400;
             color: white;
-            padding: 10px 20px; /* Mais espaço lateral */
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             height: 48px;
-            border-bottom: 4px solid #a44f30; /* Linha mais espessa e laranja */
+            border-bottom: 4px solid #a44f30;
         }
 
         .advertiser-header h2 {
@@ -142,7 +142,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px; /* Mais espaço lateral */
+            padding: 10px 20px;
             border-bottom: 1px solid #eee;
             cursor: pointer;
             transition: background-color 0.2s;
@@ -163,7 +163,7 @@
 
         /* Cor laranja para nomes dos anunciantes */
         .advertiser-name {
-            color: #a44f30; /* Laranja */
+            color: #a44f30;
             font-weight: 700;
             font-size: 0.95rem;
             margin-bottom: 3px;
@@ -178,7 +178,7 @@
         .plus-button {
             background: none;
             border: none;
-            color: #a44f30; /* Laranja */
+            color: #a44f30;
             font-size: 1.25rem;
             width: 24px;
             height: 24px;
@@ -196,18 +196,6 @@
             color: #c86a4a;
         }
 
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 12px;
-            background-color: #006400;
-            color: white;
-            border-radius: 8px;
-            margin-top: 30px; /* Espaço acima aumentado */
-            font-size: 0.8rem;
-            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
-        }
-
         /* Modal de detalhes */
         .detalhes-anunciante {
             position: fixed;
@@ -223,19 +211,19 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
             z-index: 1000;
             display: none;
-            color: #000; /* Texto preto */
+            color: #000;
         }
 
         /* Cabeçalho laranja */
         .detalhes-header {
-            background-color: #a44f30; /* Laranja */
+            background-color: #a44f30;
             color: white;
-            padding: 12px 20px; /* Mais espaço lateral */
+            padding: 12px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-radius: 10px 10px 0 0;
-            border-bottom: 2px solid #873b20; /* Borda mais escura */
+            border-bottom: 2px solid #873b20;
         }
 
         .detalhes-header h2 {
@@ -262,13 +250,13 @@
         }
 
         .detalhes-content {
-            padding: 12px 20px; /* Mais espaço lateral */
+            padding: 12px 20px;
             line-height: 1.6;
             background-color: white;
         }
 
         .detalhes-content h3 {
-            color: #a44f30; /* Laranja */
+            color: #a44f30;
             margin-bottom: 10px;
             border-bottom: 1px solid #eee;
             padding-bottom: 6px;
@@ -278,7 +266,7 @@
 
         .detalhes-content p {
             margin-bottom: 10px;
-            color: #000; /* Texto preto */
+            color: #000;
             font-size: 0.85rem;
             line-height: 1.5;
         }
@@ -368,7 +356,7 @@
             }
             
             .map {
-                border-width: 3px; /* Borda mais fina em mobile */
+                border-width: 3px;
             }
         }
     </style>
@@ -440,12 +428,6 @@
                         <button class="plus-button" onclick="event.stopPropagation(); openAdvertiserModal('ciclovia')">+</button>
                     </div>
                 </div>
-            </div>
-
-            <!-- Footer -->
-            <div class="footer">
-                <p>Zona Sul - Rio de Janeiro | Guia de Bairros e Serviços</p>
-                <p>© 2023 Todos os direitos reservados</p>
             </div>
         </div>
     </div>
