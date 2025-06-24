@@ -37,7 +37,7 @@
             color: white;
             text-align: center;
             padding: 12px 0;
-            margin: 0 auto 30px;
+            margin: 0 auto 15px; /* Menos espaço abaixo */
             border-radius: 8px;
             position: relative;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -59,21 +59,14 @@
             width: 100%;
         }
 
-        /* Mapa com novo estilo (sem borda) */
-        .map-container {
-            text-align: center;
-            margin-bottom: 30px;
-            background-color: #30082d; /* Mesma cor do container */
-        }
-
+        /* Mapa sem container */
         .map {
-            width: 80%; /* Mesmo tamanho da logo do app */
-            max-width: 600px; /* Mesmo tamanho da logo do app */
+            width: 80%;
+            max-width: 600px;
             height: auto;
-            border-radius: 10px; /* Mesmo arredondamento da logo do app */
+            border-radius: 10px;
             display: block;
-            margin: 0 auto 20px; /* Mesma margem da logo do app */
-            /* Removida a borda laranja */
+            margin: 0 auto 15px; /* Menos espaço abaixo */
         }
 
         /* Lista de anunciantes */
@@ -81,7 +74,7 @@
             background-color: white;
             border-radius: 8px;
             overflow: hidden;
-            margin-top: 30px;
+            margin-top: 15px; /* Menos espaço acima */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             border: 1px solid #ddd;
         }
@@ -328,7 +321,7 @@
             }
             
             .banner {
-                margin-bottom: 20px;
+                margin-bottom: 10px; /* Menos espaço abaixo em mobile */
             }
             
             .banner h1 {
@@ -372,6 +365,7 @@
             .map {
                 width: 90%;
                 border-radius: 8px;
+                margin-bottom: 10px; /* Menos espaço abaixo em mobile */
             }
         }
     </style>
@@ -384,11 +378,9 @@
         </div>
 
         <div class="content-container">
-            <!-- Mapa com novo tamanho e sem borda -->
-            <div class="map-container">
-                <img src="https://i.imgur.com/VqtY1Uu.png" 
-                     alt="Mapa da Zona Sul do Rio de Janeiro" class="map">
-            </div>
+            <!-- Mapa sem container -->
+            <img src="https://i.imgur.com/VqtY1Uu.png" 
+                 alt="Mapa da Zona Sul do Rio de Janeiro" class="map">
 
             <!-- Lista de anunciantes -->
             <div class="advertisers-container">
