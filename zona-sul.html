@@ -9,7 +9,7 @@
     <style>
         /* ===== ESTILOS BASE ===== */
         body {
-            background-color: #000; /* Fundo preto puro */
+            background-color: #30082d; /* Fundo roxo */
             color: #f0f0f0;
             font-family: "Roboto", sans-serif;
             margin: 0;
@@ -25,22 +25,23 @@
             width: 90%;
             max-width: 600px;
             background-color: #222;
-            padding: 25px; /* Mais espaço interno */
+            padding: 30px; /* Espaço interno aumentado */
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-            margin: 25px auto; /* Mais espaço externo */
+            margin: 30px auto; /* Espaço externo aumentado */
         }
 
-        /* Banner ZONA SUL - Verde */
+        /* Banner ZONA SUL - Verde com borda branca */
         .banner {
             background: #006400;
             color: white;
             text-align: center;
             padding: 12px 0;
-            margin: 0 auto 25px; /* Mais espaço abaixo */
+            margin: 0 auto 30px; /* Espaço abaixo aumentado */
             border-radius: 8px;
             position: relative;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border: 2px solid white; /* Borda branca */
         }
 
         .banner h1 {
@@ -49,7 +50,7 @@
             text-transform: uppercase;
             font-weight: 700;
             margin: 0;
-            padding: 0 15px; /* Mais espaço lateral */
+            padding: 0 20px; /* Mais espaço lateral */
             text-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
         }
 
@@ -58,13 +59,13 @@
             width: 100%;
         }
 
-        /* Mapa */
+        /* Mapa com borda laranja */
         .map-container {
             background-color: #30082d;
             padding: 10px;
             border-radius: 8px;
             text-align: center;
-            margin-bottom: 25px; /* Mais espaço abaixo */
+            margin-bottom: 30px; /* Espaço abaixo aumentado */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
@@ -74,6 +75,8 @@
             border-radius: 6px;
             display: block;
             margin: 0 auto;
+            border: 4px solid #a44f30; /* Borda laranja mais espessa */
+            box-sizing: border-box;
         }
 
         .map-overlay {
@@ -82,12 +85,12 @@
             border-radius: 6px;
         }
 
-        /* Lista de anunciantes - FUNDO BRANCO COM FONTE ROXA MAIS CLARA */
+        /* Lista de anunciantes */
         .advertisers-container {
             background-color: white;
             border-radius: 8px;
             overflow: hidden;
-            margin-top: 25px; /* Mais espaço acima */
+            margin-top: 30px; /* Espaço acima aumentado */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             border: 1px solid #ddd;
         }
@@ -95,12 +98,12 @@
         .advertiser-header {
             background-color: #006400;
             color: white;
-            padding: 10px 15px; /* Mais espaço lateral */
+            padding: 10px 20px; /* Mais espaço lateral */
             display: flex;
             justify-content: space-between;
             align-items: center;
             height: 48px;
-            border-bottom: 2px solid #30082d;
+            border-bottom: 4px solid #a44f30; /* Linha mais espessa e laranja */
         }
 
         .advertiser-header h2 {
@@ -139,7 +142,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 15px; /* Mais espaço lateral */
+            padding: 10px 20px; /* Mais espaço lateral */
             border-bottom: 1px solid #eee;
             cursor: pointer;
             transition: background-color 0.2s;
@@ -158,9 +161,9 @@
             flex: 1;
         }
 
-        /* Roxo mais claro - #7e3c78 */
+        /* Cor laranja para nomes dos anunciantes */
         .advertiser-name {
-            color: #7e3c78;
+            color: #a44f30; /* Laranja */
             font-weight: 700;
             font-size: 0.95rem;
             margin-bottom: 3px;
@@ -175,7 +178,7 @@
         .plus-button {
             background: none;
             border: none;
-            color: #7e3c78;
+            color: #a44f30; /* Laranja */
             font-size: 1.25rem;
             width: 24px;
             height: 24px;
@@ -190,7 +193,7 @@
 
         .plus-button:hover {
             transform: scale(1.15);
-            color: #9d5b98;
+            color: #c86a4a;
         }
 
         /* Footer */
@@ -200,12 +203,12 @@
             background-color: #006400;
             color: white;
             border-radius: 8px;
-            margin-top: 25px; /* Mais espaço acima */
+            margin-top: 30px; /* Espaço acima aumentado */
             font-size: 0.8rem;
             box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
         }
 
-        /* Modal de detalhes - FONTE ROXA MAIS CLARA */
+        /* Modal de detalhes */
         .detalhes-anunciante {
             position: fixed;
             top: 50%;
@@ -220,25 +223,26 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
             z-index: 1000;
             display: none;
-            color: #333;
+            color: #000; /* Texto preto */
         }
 
+        /* Cabeçalho laranja */
         .detalhes-header {
-            background-color: #006400;
+            background-color: #a44f30; /* Laranja */
             color: white;
-            padding: 12px 15px; /* Mais espaço lateral */
+            padding: 12px 20px; /* Mais espaço lateral */
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-radius: 10px 10px 0 0;
-            border-bottom: 2px solid #30082d;
+            border-bottom: 2px solid #873b20; /* Borda mais escura */
         }
 
         .detalhes-header h2 {
             font-size: 1.15rem;
             margin: 0;
             font-weight: 700;
-            text-shadow: 0 0 3px rgba(0, 255, 0, 0.5);
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
         }
 
         .fechar-detalhes {
@@ -258,13 +262,13 @@
         }
 
         .detalhes-content {
-            padding: 12px 15px; /* Mais espaço lateral */
+            padding: 12px 20px; /* Mais espaço lateral */
             line-height: 1.6;
             background-color: white;
         }
 
         .detalhes-content h3 {
-            color: #7e3c78;
+            color: #a44f30; /* Laranja */
             margin-bottom: 10px;
             border-bottom: 1px solid #eee;
             padding-bottom: 6px;
@@ -274,7 +278,7 @@
 
         .detalhes-content p {
             margin-bottom: 10px;
-            color: #000;
+            color: #000; /* Texto preto */
             font-size: 0.85rem;
             line-height: 1.5;
         }
@@ -294,7 +298,7 @@
         @media (max-width: 768px) {
             .main-container {
                 width: 90%;
-                padding: 20px;
+                padding: 25px;
             }
             
             .banner h1 {
@@ -317,22 +321,22 @@
             
             .main-container {
                 width: 95%;
-                padding: 15px;
-                margin: 15px auto;
+                padding: 20px;
+                margin: 20px auto;
             }
             
             .banner {
-                margin-bottom: 15px;
+                margin-bottom: 20px;
             }
             
             .banner h1 {
                 font-size: 1.3rem;
-                padding: 0 10px;
+                padding: 0 15px;
             }
             
             .advertiser-header {
                 height: 42px;
-                padding: 8px 12px;
+                padding: 8px 15px;
             }
             
             .advertiser-header h2 {
@@ -360,20 +364,24 @@
             }
 
             .advertiser-item {
-                padding: 10px 12px;
+                padding: 10px 15px;
+            }
+            
+            .map {
+                border-width: 3px; /* Borda mais fina em mobile */
             }
         }
     </style>
 </head>
 <body>
     <div class="main-container">
-        <!-- Banner em verde -->
+        <!-- Banner em verde com borda branca -->
         <div class="banner">
             <h1>ZONA SUL</h1>
         </div>
 
         <div class="content-container">
-            <!-- Mapa -->
+            <!-- Mapa com borda laranja -->
             <div class="map-container">
                 <div class="map-overlay">
                     <img src="https://images.unsplash.com/photo-1591311630200-ffa9120a540f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=600&q=80" 
