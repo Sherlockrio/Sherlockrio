@@ -9,7 +9,7 @@
     <style>
         /* ===== ESTILOS BASE ===== */
         body {
-            background-color: #000; /* TELA PRETA */
+            background-color: #000;
             color: #f0f0f0;
             font-family: "Roboto", sans-serif;
             margin: 0;
@@ -20,11 +20,11 @@
             align-items: center;
         }
 
-        /* Container principal com fundo roxo e mais espaço lateral */
+        /* Container principal */
         .main-container {
             width: 90%;
             max-width: 600px;
-            background-color: #30082d; /* FUNDO DA PÁGINA ROXO */
+            background-color: #30082d;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
@@ -282,6 +282,25 @@
             display: none;
         }
 
+        /* Estilo para links nos detalhes */
+        .site-link {
+            color: #006400;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .site-link:hover {
+            color: #009900;
+            text-decoration: underline;
+        }
+
+        .site-link i {
+            margin-right: 5px;
+        }
+
         /* Responsividade */
         @media (max-width: 768px) {
             .main-container {
@@ -369,10 +388,10 @@
         </div>
 
         <div class="content-container">
-            <!-- Mapa com borda laranja -->
+            <!-- Mapa com borda laranja (novo mapa) -->
             <div class="map-container">
                 <div class="map-overlay">
-                    <img src="https://images.unsplash.com/photo-1591311630200-ffa9120a540f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&h=600&q=80" 
+                    <img src="https://i.imgur.com/VqtY1Uu.png" 
                          alt="Mapa da Zona Sul do Rio de Janeiro" class="map">
                 </div>
             </div>
@@ -458,7 +477,11 @@
             <h3>Contato</h3>
             <p>Telefone: (21) 2525-0000<br>
             E-mail: contato@lagoaaventuras.com.br<br>
-            Site: www.lagoaaventuras.com.br</p>
+            Site: 
+                <a href="https://www.lagoaaventuras.com.br" target="_blank" class="site-link">
+                    <i class="fas fa-external-link-alt"></i>www.lagoaaventuras.com.br
+                </a>
+            </p>
         </div>
     </div>
     
