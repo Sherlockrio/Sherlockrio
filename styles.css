@@ -339,6 +339,16 @@ select:focus {
   z-index: 1;
 }
 
+.map {
+    width: 80%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto 15px; /* Menos espaço abaixo */
+    background-color: transparent; /* Remove qualquer fundo */
+}
+
 /* RESPONSIVO PARA MOBILE */
 @media (max-width: 600px) {
   .header-image {
