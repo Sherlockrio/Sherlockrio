@@ -379,8 +379,8 @@
 
         <div class="content-container">
             <!-- Mapa sem container -->
-            <img src="https://i.imgur.com/4DR6m8D.jpeg" 
-                 alt="Mapa da Zona Sul do Rio de Janeiro" class="map">
+            <img src="blob:https://imgur.com/c1cab570-6475-4edb-8d54-15e63d50db96" 
+                 alt="Mapa da Zona Oeste do Rio de Janeiro" class="map">
 
             <!-- Lista de anunciantes -->
             <div class="advertisers-container">
@@ -395,8 +395,8 @@
                 <div class="advertisers-list">
                     <div class="advertiser-item" onclick="openAdvertiserModal('lagoa-aventuras')">
                         <div class="advertiser-info">
-                            <div class="advertiser-name">LAGOA AVENTURAS (Lagoa) </div>
-                            <div class="advertiser-description">Atividades de aventura</div>
+                            <div class="advertiser-name"> CAPELA MAGDALENA (Guaratiba) </div>
+                            <div class="advertiser-description">Museu de miniaturas e evento com gastronomia e música </div>
                         </div>
                         <button class="plus-button" onclick="event.stopPropagation(); openAdvertiserModal('lagoa-aventuras')">+</button>
                     </div>
@@ -409,29 +409,28 @@
     <!-- Modal para Lagoa Aventuras -->
     <div class="detalhes-anunciante" id="lagoa-aventuras-modal">
         <div class="detalhes-header">
-            <h2>LAGOA AVENTURAS (Lagoa Aventuras)</h2>
+            <h2>CAPELA MAGDALENA (Guaratiba)</h2>
             <button class="fechar-detalhes" onclick="fecharDetalhes()">×</button>
         </div>
         <div class="detalhes-content">
             <h3>Sobre o Estabelecimento</h3>
-            <p>A Lagoa Aventuras é especializada em atividades de aventura na região da Lagoa Rodrigo de Freitas. Oferecemos experiências únicas para toda a família.</p>
+            <p> No local também há um Museu de Miniaturas, com réplicas de Castelos, Catedrais e as mais imponentes construções do mundo.</p>
             
             <h3>Atividades</h3>
-            <p>Passeios de pedalinho, Stand Up Paddle, Caiaque, Tirolesa sobre a lagoa e Escalada artificial.</p>
+            <p>Concerto Musical Barroco em Cravo com o Maestro Roberto de Regina </p>
             
             <h3>Horário de Funcionamento</h3>
             <p>Terça a Domingo: 9:00 - 18:00<br>
             Segunda: Fechado</p>
             
             <h3>Localização</h3>
-            <p>Avenida Borges de Medeiros, s/n - Lagoa, Rio de Janeiro - RJ</p>
+            <p>End: Estrada do Mato Alto, 6024 – Guaratiba</p>
             
             <h3>Contato</h3>
-            <p>Telefone: (21) 2525-0000<br>
-            E-mail: contato@lagoaaventuras.com.br<br>
+            <p>Telefone: (21) 99470 5431<br>
             Site: 
                 <a href="https://www.lagoaaventuras.com.br" target="_blank" class="site-link">
-                    <i class="fas fa-external-link-alt"></i>www.lagoaaventuras.com.br
+                    <i class="fas fa-external-link-alt"></i>https://www.capelamagdalena.com/ 
                 </a>
             </p>
         </div>
