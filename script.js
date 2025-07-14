@@ -47,7 +47,7 @@ const anuncios = [
   {
     local: "Zona Sul",
     logo: "https://cafelamas.com.br/wp-content/uploads/2020/08/cropped-favicon-cafe-lamas-165x165.png",
-    mapThumbnail: "https://i.imgur.com/MRmth8W.png",
+    mapThumbnail: "https://i.ibb.co/4wr3RyJ2/zona-sul-2.png",
     info: [
       "CAFÉ LAMAS",
       "Restaurante tradicional",
@@ -60,7 +60,7 @@ const anuncios = [
   {
     local: "Zona Norte",
     logo: "https://i.imgur.com/1Ax0HIk.jpeg",
-    mapThumbnail: "https://i.imgur.com/fvOFhug.png",
+    mapThumbnail: "https://i.ibb.co/bM9XVsQX/zona-norte.png",
     info: [
       "PESCADOS NA BRASA",
       "Restaurante comida do norte / Carimbó",
@@ -74,7 +74,7 @@ const anuncios = [
   {
     local: "Centro",
     logo: "https://static.ifood-static.com.br/image/upload/t_thumbnail/logosgde/7602fa23-656e-4c11-9c93-7e6117a914c4/202308101032_Eyd3_i.jpg",
-    mapThumbnail: "https://i.imgur.com/2Ytp1Jy.png",
+    mapThumbnail: "https://i.ibb.co/533gcXw/centro.png",
     info: [
       "AL FARABI",
       "Restaurante, botequim e eventos",
@@ -88,7 +88,7 @@ const anuncios = [
   {
     local: "Zona Oeste",
     logo: "https://espaconutriluz.com.br/wp-content/uploads/2022/04/logo-nutriluz.png",
-    mapThumbnail: "https://i.imgur.com/2Ytp1Jy.png",
+    mapThumbnail: "https://i.ibb.co/20SFLhbj/zona-oeste.png",
     info: [
       "ESPAÇO NUTRI LUZ",
       "Espaço de bem estar",
