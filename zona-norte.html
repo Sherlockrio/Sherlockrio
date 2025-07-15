@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zona Sul - Rio de Janeiro</title>
+    <title>Zona Norte - Rio de Janeiro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -31,7 +31,7 @@
             margin: 30px auto;
         }
 
-        /* Banner ZONA SUL - Verde com borda branca */
+        /* Banner CENTRO - Verde com borda branca */
         .banner {
             background: #006400;
             color: white;
@@ -379,8 +379,8 @@
 
         <div class="content-container">
             <!-- Mapa sem container -->
-            <img src="https://i.ibb.co/533gcXw/centro.png" 
-                 alt="Mapa do Centro do Rio de Janeiro" class="map">
+            <img src="https://i.ibb.co/bM9XVsQX/zona-norte.png" 
+                 alt="Mapa da Zona Norte do Rio de Janeiro" class="map">
 
             <!-- Lista de anunciantes -->
             <div class="advertisers-container">
@@ -393,28 +393,27 @@
                 </div>
                 
                 <div class="advertisers-list">
-                    <div class="advertiser-item" onclick="openAdvertiserModal('atelie-ciro-fernandes')">
+                    <div class="advertiser-item" onclick="openAdvertiserModal('livraria-belle-epoque')">
                         <div class="advertiser-info">
-                            <div class="advertiser-name">ATELIÊ CIRO FERNANDES (Lapa) </div>
-                            <div class="advertiser-description">Ateliê de xilogravura</div>
+                            <div class="advertiser-name">LIVRARIA BELLE ÉPOQUE (Méier) </div>
+                            <div class="advertiser-description">Sebo e livraria</div>
                         </div>
-                        <button class="plus-button" onclick="event.stopPropagation(); openAdvertiserModal('atelie-ciro-fernandes')">+</button>
+                        <button class="plus-button" onclick="event.stopPropagation(); openAdvertiserModal(' livraria-belle-epoque')">+</button>
                     </div>
                     
-   </div>
+    </div>
 
     <!-- Janela de detalhes do anunciante -->
     <div class="overlay" id="overlay" onclick="fecharDetalhes()"></div>
     
-    <!-- Modal para Ateliê Ciro Fernandes -->
-    <div class="detalhes-anunciante" id="atelie-ciro-fernandes">
+    <!-- Modal para Lagoa Aventuras -->
+    <div class="detalhes-anunciante" id="livraria-belle-epoque-modal">
         <div class="detalhes-header">
-            <h2>ATELIÊ CIRO FERNANDES (Lapa)</h2>
+            <h2>LIVRARIA BELLE ÉPOQUE Livraria Belle Époque)</h2>
             <button class="fechar-detalhes" onclick="fecharDetalhes()">×</button>
         </div>
         <div class="detalhes-content">
-        <!-- Imagem do estabelecimento -->
-         <img src="https://i.ibb.co/sv2Vn9Z3/IMAGEM-BELLE-POQUE.jpg"
+  <img src="https://i.ibb.co/sv2Vn9Z3/IMAGEM-BELLE-POQUE.jpg"
          class="foto-anunciante" alt="Foto da Livraria Belle Époque">
             
             <h3>Sobre o Estabelecimento</h3>
@@ -433,11 +432,12 @@
             <p>Telefone: (21) 97625-7600<br>
            Site: 
                 <a href="https://www.instagram.com/livrariabelleepoque/" target="_blank" class="site-link">
-                    <i class="fas fa-external-link-alt"></i> https://www.instagram.com/livrariabelleepoque 
+                    <i class="fas fa-external-link-alt"></i> https://www.instagram.com/livrariabelleepoque </a>
+            </p>              
             </p>
         </div>
     </div>
-    
+
     <script>
         // Função para abrir o modal do anunciante
         function openAdvertiserModal(advertiserId) {
@@ -473,4 +473,3 @@
     </script>
 </body>
 </html>
-
