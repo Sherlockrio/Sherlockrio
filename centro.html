@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zona Sul - Rio de Janeiro</title>
+    <title>Centro - Rio de Janeiro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -31,7 +31,7 @@
             margin: 30px auto;
         }
 
-        /* Banner ZONA SUL - Verde com borda branca */
+        /* Banner CENTRO - Verde com borda branca */
         .banner {
             background: #006400;
             color: white;
@@ -395,28 +395,27 @@
                 <div class="advertisers-list">
                     <div class="advertiser-item" onclick="openAdvertiserModal('atelie-ciro-fernandes')">
                         <div class="advertiser-info">
-                            <div class="advertiser-name">ATELIÊ CIRO FERNANDES (Lapa) </div>
+                            <div class="advertiser-name">ATELIÊ CIRO FERNANDES (Lagoa) </div>
                             <div class="advertiser-description">Ateliê de xilogravura</div>
                         </div>
-                        <button class="plus-button" onclick="event.stopPropagation(); openAdvertiserModal('atelie-ciro-fernandes')">+</button>
+                        <button class="plus-button" onclick="event.stopPropagation(); openAdvertiserModal(' atelie-ciro-fernandes ')">+</button>
                     </div>
                     
-   </div>
+    </div>
 
     <!-- Janela de detalhes do anunciante -->
     <div class="overlay" id="overlay" onclick="fecharDetalhes()"></div>
     
-    <!-- Modal para Ateliê Ciro Fernandes -->
-    <div class="detalhes-anunciante" id="atelie-ciro-fernandes">
+    <!-- Modal para Lagoa Aventuras -->
+    <div class="detalhes-anunciante" id="ateliê-ciro-fernandes-modal">
         <div class="detalhes-header">
-            <h2>ATELIÊ CIRO FERNANDES (Lapa)</h2>
+            <h2>ATELIÊ CIRO FERNANDES (Ateliê Ciro Fernandes)</h2>
             <button class="fechar-detalhes" onclick="fecharDetalhes()">×</button>
         </div>
         <div class="detalhes-content">
-        <!-- Imagem do estabelecimento -->
         <img src="https://i.ibb.co/BHFRvqRV/IMAGEM-ATELI-CIRO.jpg" 
-             class="foto-anunciante" alt="Foto do Ateliê Ciro Fernandes">
-           
+        class="foto-anunciante" alt="Foto do Ateliê Ciro Fernandes">
+
             <h3>Sobre o Estabelecimento</h3>
             <p>Ateliê do prestigiado xilogravurista, que já ilustrou livros de autores como Raquel de Queiroz, Orígenes Lessa, Gilberto Freire, Autran Dourado, Ferreira Gullar, entre outros </p>
             
@@ -433,11 +432,12 @@
             <p>Telefone: (21) 99124-6515<br>
            Site: 
                 <a href="https://www.instagram.com/cirofernandesxilo/" target="_blank" class="site-link">
-                    <i class="fas fa-external-link-alt"></i> https://www.instagram.com/cirofernandesxilo/
+                    <i class="fas fa-external-link-alt"></i> https://www.instagram.com/cirofernandesxilo/  </a>
+            </p>              
             </p>
         </div>
     </div>
-    
+
     <script>
         // Função para abrir o modal do anunciante
         function openAdvertiserModal(advertiserId) {
@@ -473,3 +473,4 @@
     </script>
 </body>
 </html>
+
