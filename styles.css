@@ -518,11 +518,3 @@ body.region-page {
   color: #333;
 }
 
-.detalhes-content img {
-    width: 100%;
-    max-height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-}
