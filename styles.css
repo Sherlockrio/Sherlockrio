@@ -531,9 +531,9 @@ body.region-page {
     overflow: hidden;
 }
 
-/* Responsividade para telas menores */
 @media (max-width: 768px) {
     .foto-anunciante {
-        max-height: 200px;
+        height: 200px;
     }
 }
+
