@@ -520,12 +520,15 @@ body.region-page {
 
 .foto-anunciante {
     width: 100%;
-    height: auto;
-    max-height: 300px;
+    height: 250px;
+    object-fit: cover;
     border-radius: 8px;
     margin-bottom: 15px;
-    object-fit: cover;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    background-color: #ddd;
+    transition: transform 0.3s ease;
+    display: block;
+    overflow: hidden;
 }
 
 /* Responsividade para telas menores */
