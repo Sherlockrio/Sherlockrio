@@ -524,11 +524,11 @@ body.region-page {
     border-radius: 8px;
     margin: 15px auto; /* centraliza a imagem */
     display: block; /* necessário pra centralização funcionar */
-[    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);D
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 
 @media (max-width: 768px) {
     .foto-anunciante {
-        width: 250px;
+        width: 90%;
         height: 200px;
         object-fit: cover;
         margin: 15px auto;
