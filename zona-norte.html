@@ -54,7 +54,7 @@
         .content-container {
             width: 100%;
         }
-        /* Mapa sem container - ESPAÇAMENTO AUMENTADO */
+        /* Mapa sem container */
         .map {
             width: 80%;
             max-width: 600px;
@@ -89,7 +89,7 @@
             gap: 8px;
             font-weight: 700;
             margin: 0;
-            text-shadow: 0 0 3px rgba(0, 255, 0, 0.7);
+            text-shadow: 0 0 3px rgba(0, 255, 0, 0.5);
         }
         .back-to-app {
             color: white;
@@ -177,7 +177,6 @@
             display: none;
             color: #000;
         }
-        /* Cabeçalho laranja */
         .detalhes-header {
             background-color: #a44f30;
             color: white;
@@ -253,8 +252,7 @@
         .site-link i {
             margin-right: 5px;
         }
-
-        /* Estilo para foto do anunciante */
+        /* Imagem do anunciante */
         .foto-anunciante {
             width: 100%;
             height: auto;
@@ -341,20 +339,19 @@
 </head>
 <body>
     <div class="main-container">
-        <!-- Banner em verde com borda branca -->
+        <!-- Banner -->
         <div class="banner">
             <h1>CENTRO</h1>
         </div>
         <div class="content-container">
-            <!-- Mapa sem container -->
-            <img src=" https://i.ibb.co/bM9XVsQX/zona-norte.png " 
+            <!-- Mapa -->
+            <img src=" https://i.ibb.co/bM9XVsQX/zona-norte.png "
                  alt="Mapa da Zona Norte do Rio de Janeiro" class="map">
 
             <!-- Lista de anunciantes -->
             <div class="advertisers-container">
                 <div class="advertiser-header">
                     <h2><i class="fas fa-store"></i> ANUNCIANTES</h2>
-                    <!-- Link para a tela inicial do app -->
                     <a href="https://sherlockrio.vercel.app " class="back-to-app">
                         <i class="fas fa-arrow-left"></i> <span>Voltar para o app</span>
                     </a>
@@ -370,16 +367,17 @@
                 </div>
             </div>
 
-            <!-- Overlay e Modal -->
+            <!-- Overlay -->
             <div class="overlay" id="overlay" onclick="fecharDetalhes()"></div>
 
-            <!-- Modal para Livraria Belle Époque -->
+            <!-- Modal -->
             <div class="detalhes-anunciante" id="livraria-belle-epoque-modal">
                 <div class="detalhes-header">
                     <h2>LIVRARIA BELLE ÉPOQUE (Méier)</h2>
                     <button class="fechar-detalhes" onclick="fecharDetalhes()">×</button>
                 </div>
                 <div class="detalhes-content">
+                    <!-- Imagem do estabelecimento -->
                     <img src="https://i.ibb.co/sv2Vn9Z3/IMAGEM-BELLE-POQUE.jpg "
                          class="foto-anunciante" alt="Foto da Livraria Belle Époque">
 
@@ -397,9 +395,9 @@
 
                     <h3>Contato</h3>
                     <p>Telefone: (21) 97625-7600<br>
-                       Site: 
+                       Site:
                         <a href="https://www.instagram.com/livrariabelleepoque/ " target="_blank" class="site-link">
-                            <i class="fas fa-external-link-alt"></i> https://www.instagram.com/livrariabelleepoque 
+                            <i class="fas fa-external-link-alt"></i> Instagram
                         </a>
                     </p>
                 </div>
@@ -442,4 +440,4 @@
         });
     </script>
 </body>
-</html>
+</html> 
