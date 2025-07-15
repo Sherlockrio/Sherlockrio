@@ -374,13 +374,13 @@
     <div class="main-container">
         <!-- Banner em verde com borda branca -->
         <div class="banner">
-            <h1>ZONA NORTE</h1>
+            <h1>CENTRO</h1>
         </div>
 
         <div class="content-container">
             <!-- Mapa sem container -->
-            <img src="https://i.ibb.co/bM9XVsQX/zona-norte.png" 
-                 alt="Mapa da Zona Norte do Rio de Janeiro" class="map">
+            <img src="https://i.ibb.co/533gcXw/centro.png" 
+                 alt="Mapa do Centro do Rio de Janeiro" class="map">
 
             <!-- Lista de anunciantes -->
             <div class="advertisers-container">
@@ -393,12 +393,12 @@
                 </div>
                 
                 <div class="advertisers-list">
-                    <div class="advertiser-item" onclick="openAdvertiserModal('livraria-belle-époque')">
+                    <div class="advertiser-item" onclick="openAdvertiserModal('atelie-ciro-fernandes')">
                         <div class="advertiser-info">
-                            <div class="advertiser-name">LIVRARIA BELLE ÉPOQUE (Méier) </div>
-                            <div class="advertiser-description">Sebo e livraria</div>
+                            <div class="advertiser-name">ATELIÊ CIRO FERNANDES (Lapa) </div>
+                            <div class="advertiser-description">Ateliê de xilogravura</div>
                         </div>
-                        <button class="plus-button" onclick="event.stopPropagation(); openAdvertiserModal('livraria-belle-époque')">+</button>
+                        <button class="plus-button" onclick="event.stopPropagation(); openAdvertiserModal('atelie-ciro-fernandes')">+</button>
                     </div>
                     
    </div>
@@ -406,13 +406,14 @@
     <!-- Janela de detalhes do anunciante -->
     <div class="overlay" id="overlay" onclick="fecharDetalhes()"></div>
     
-    <!-- Modal para Livraria Belle Époque -->
-    <div class="detalhes-anunciante" id="livraria-belle-époque-modal">
+    <!-- Modal para Ateliê Ciro Fernandes -->
+    <div class="detalhes-anunciante" id="atelie-ciro-fernandes">
         <div class="detalhes-header">
-            <h2>LIVRARIA BELLE ÉPOQUE (Méier)</h2>
+            <h2>ATELIÊ CIRO FERNANDES (Lapa)</h2>
             <button class="fechar-detalhes" onclick="fecharDetalhes()">×</button>
         </div>
         <div class="detalhes-content">
+        <!-- Imagem do estabelecimento -->
          <img src="https://i.ibb.co/sv2Vn9Z3/IMAGEM-BELLE-POQUE.jpg"
          class="foto-anunciante" alt="Foto da Livraria Belle Époque">
             
@@ -446,7 +447,7 @@
             });
             
             // Mostrar o modal específico
-            const modal = document.getElementById(`${advertiserId}-modal`);
+            const modal = document.getElementById(advertiserId);
             if (modal) {
                 modal.style.display = 'block';
                 document.getElementById('overlay').style.display = 'block';
@@ -472,3 +473,4 @@
     </script>
 </body>
 </html>
+
