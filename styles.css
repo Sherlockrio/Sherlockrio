@@ -528,9 +528,8 @@ body.region-page {
 
 @media (max-width: 768px) {
     .foto-anunciante {
-        width: 90%;
-        height: 200px;
+        width: 250px;
+        height: 180px;
         object-fit: cover;
-        margin: 15px auto;
     }
 }
