@@ -520,9 +520,16 @@ body.region-page {
 
 .foto-anunciante {
     width: 100%;
+    height: auto;
     border-radius: 8px;
     margin-bottom: 15px;
     object-fit: cover;
-    height: 200px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .foto-anunciante {
+        max-height: 200px;
+    }
 }
