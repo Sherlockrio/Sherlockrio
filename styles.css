@@ -519,17 +519,19 @@ body.region-page {
 }
 
 .foto-modal {
-    max-width: 100%; /* Não ultrapassa o limite do container */
-    height: auto; /* Mantém proporção */
+    width: 100%; 
+    max-widh: 400px
+    height: auto;
+    height: auto; 
     border-radius: 8px;
     margin: 15px auto;
     display: block;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    image-rendering: auto; /* Evita pixelação em imagens redimensionadas */
+    object-fit: contain;
 }
 
 @media (min-width: 768px) {
     .foto-modal {
-        max-width: 400px; /* Limite máximo em desktop */
+        max-width: 300px; /* Limite máximo em desktop */
     }
 }
