@@ -518,3 +518,11 @@ body.region-page {
   color: #333;
 }
 
+.foto-anunciante {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    object-fit: cover;
+    height: 200px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
