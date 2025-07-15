@@ -407,7 +407,7 @@
     <div class="overlay" id="overlay" onclick="fecharDetalhes()"></div>
     
     <!-- Modal para Lagoa Aventuras -->
-    <div class="detalhes-anunciante" id="livraria-belle-epoque">
+    <div class="detalhes-anunciante" id="livraria-belle-epoque-modal">
         <div class="detalhes-header">
             <h2>LIVRARIA BELLE ÉPOQUE Livraria Belle Époque)</h2>
             <button class="fechar-detalhes" onclick="fecharDetalhes()">×</button>
@@ -447,7 +447,7 @@
             });
             
             // Mostrar o modal específico
-            const modal = document.getElementById(advertiserId);
+           const modal = document.getElementById(advertiserId + "-modal");
             if (modal) {
                 modal.style.display = 'block';
                 document.getElementById('overlay').style.display = 'block';
