@@ -518,20 +518,27 @@ body.region-page {
   color: #333;
 }
 
-.foto-modal {
-    width: 100%; 
-    max-widh: 400px
-    height: auto;
-    height: auto; 
-    border-radius: 8px;
-    margin: 15px auto;
-    display: block;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    object-fit: contain;
+/* Controla o tamanho das imagens nos modais */
+.detalhes-content img {
+    max-width: 100%; /* Imagem nunca vai ficar maior que o container */
+    height: auto; /* Mantém a proporção */
+    display: block; /* Centraliza automaticamente */
+    margin: 15px auto; /* Espaço acima e abaixo da imagem */
+    border-radius: 8px; /* Borda arredondada */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    object-fit: contain; /* Evita cortes na imagem */
 }
 
+/* Limita a altura máxima em telas grandes */
 @media (min-width: 768px) {
-    .foto-modal {
-        max-width: 300px; /* Limite máximo em desktop */
+    .detalhes-content img {
+        max-height: 400px; /* Altura máxima para desktops */
+    }
+}
+
+/* Limita a altura máxima em telas menores */
+@media (max-width: 768px) {
+    .detalhes-content img {
+        max-height: 300px; /* Altura máxima para mobile */
     }
 }
