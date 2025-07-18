@@ -1,14 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda Sherlock Rio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<html lang="pt-BR">
+  <head>
 
     <!-- Google Analytics -->
-    <script async src=" https://www.googletagmanager.com/gtag/js?id=G-VC5GH2CF28"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VC5GH2CF28"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -16,424 +11,156 @@
         gtag('config', 'G-VC5GH2CF28');
     </script>
 
-    <style>
-        /* ===== ESTILOS BASE ===== */
-        body {
-            background-color: #000;
-            color: #f0f0f0;
-            font-family: "Roboto", sans-serif;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            text-align: center;
-            background-color: #222;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-            width: 90%;
-            max-width: 600px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 20px auto;
-        }
-
-        header {
-            margin-bottom: 30px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .header-image {
-            width: 80%;
-            max-width: 600px;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            color: white;
-            font-size: 28px;
-            font-weight: bold;
-            font-family: "Playfair Display", serif;
-            margin: 10px 0;
-        }
-
-        .app-description {
-            color: white;
-            font-size: 16px;
-            margin: 0;
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            font-size: 24px;
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .social-icon .fa-facebook-f { color: #1877f2; }
-        .social-icon .fa-instagram { color: #e4405f; }
-        .social-icon .fa-youtube { color: #ff0000; }
-        .social-icon .fa-whatsapp { color: #25d366; }
-
-        .social-icon:hover {
-            opacity: 0.8;
-        }
-
-        .filters {
-            margin-bottom: 20px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        select {
-            padding: 10px;
-            margin: 5px;
-            border: 2px solid white;
-            border-radius: 5px;
-            background-color: darkgreen;
-            color: white;
-            font-size: 16px;
-            font-family: "Roboto", sans-serif;
-            transition: border-color 0.3s ease;
-            flex: 1 1 45%;
-            max-width: 200px;
-        }
-
-        select option {
-            background-color: white !important;
-            color: darkgreen !important;
-            padding: 10px;
-        }
-
-        select:focus {
-            border-color: brown;
-            outline: none;
-        }
-
-        #searchResults {
-            margin-top: 20px;
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            width: calc(100% - 40px);
-            max-width: 520px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 20px;
-        }
-
-        /* FOOTER DINÂMICO */
-        .new-footer {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 10px;
-            width: 100%;
-            background-color: #30082d;
-            padding: 10px;
-            box-sizing: border-box;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-
-        .footer-section {
-            border: 1px solid white;
-            border-radius: 5px;
-            padding: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 80px;
-        }
-
-        #footerTopLeft img {
-            width: 100px;
-            height: 100px;
-            object-fit: contain;
-        }
-
-        #footerTopRight {
-            grid-column: 2;
-            grid-row: 1;
-            text-align: center;
-            justify-content: flex-start;
-            align-items: center;
-            padding: 8px 12px;
-        }
-
-        #footerBottomLeft {
-            grid-column: 1;
-            grid-row: 2;
-        }
-
-        #footerBottomRight {
-            grid-column: 2;
-            grid-row: 2;
-            position: relative;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 80px;
-            overflow: hidden;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-        }
-
-        #location-icon {
-            width: 100px;
-            height: 100px;
-            object-fit: contain;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-        }
-
-        #advertiser-logo {
-            width: 100px;
-            height: 100px;
-            object-fit: contain;
-        }
-
-        #footerTopRight p,
-        #footerBottomLeft p {
-            margin: 0;
-            font-size: 13px;
-            line-height: 1.3;
-        }
-
-        .advertiser-info {
-            text-align: left;
-            font-size: 13px;
-            line-height: 1.3;
-            width: 100%;
-        }
-
-        .advertiser-info h4 {
-            margin: 0 0 3px 0;
-            font-size: 13px;
-        }
-
-        .advertiser-info p {
-            margin: 0 0 3px 0;
-            font-size: 12px;
-        }
-
-        .advertiser-info a {
-            color: white;
-            text-decoration: underline;
-        }
-
-        #google-maps {
-            width: 100% !important;
-            height: 100% !important;
-            min-height: 80px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            display: none;
-            z-index: 1;
-        }
-
-        @media (max-width: 600px) {
-            .header-image {
-                width: 95%;
-            }
-
-            select {
-                max-width: 100%;
-            }
-
-            .new-footer {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            #footerTopLeft img,
-            #advertiser-logo {
-                width: 80px;
-                height: 80px;
-            }
-
-            #location-icon {
-                width: 80px;
-                height: 80px;
-            }
-
-            #footerTopRight p,
-            #footerBottomLeft p,
-            .advertiser-info {
-                font-size: 12px;
-            }
-
-            .advertiser-info h4 {
-                font-size: 12px;
-            }
-        }
-    </style>
-</head>
-<body>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Agenda Sherlock Rio - Eventos interessantes ou diferentes na cidade do Rio de Janeiro"
+    />
+    <meta
+      name="keywords"
+      content="eventos, Rio de Janeiro, agenda, cultura, lazer"
+    />
+    <meta name="author" content="Sherlock Rio" />
+    <title>Agenda Sherlock Rio</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <img src=" https://i.imgur.com/M8W30c0.jpeg " alt="Logo do App" class="header-image">
-            <h1>AGENDA SHERLOCK RIO</h1>
-            <p class="app-description">Eventos interessantes ou diferentes na cidade do Rio de Janeiro</p>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/groups/sherlockrio " target="_blank" class="social-icon">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.instagram.com/sherlock_rio/ " target="_blank" class="social-icon">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.youtube.com/ @SherlockRio" target="_blank" class="social-icon">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="https://abre.ai/zapsherlock " target="_blank" class="social-icon">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-            </div>
-        </header>
-
-        <div class="filters">
-            <select id="filterLocation" onchange="atualizarFooterDinamico()">
-                <option value="">LOCAL</option>
-                <option value="Centro">Centro</option>
-                <option value="Zona Norte">Zona Norte</option>
-                <option value="Zona Sul">Zona Sul</option>
-                <option value="Zona Oeste">Zona Oeste</option>
-            </select>
+      <header>
+        <img
+          src="https://i.imgur.com/M8W30c0.jpeg"
+          alt="Cabeçalho Agenda Sherlock Rio"
+          class="header-image"
+          loading="lazy"
+        />
+        <h1>AGENDA SHERLOCK RIO</h1>
+        <p class="app-description">
+          Eventos interessantes ou diferentes na cidade do Rio de Janeiro
+        </p>
+        <div class="social-icons">
+          <a
+            href="https://www.facebook.com/groups/sherlockrio"
+            target="_blank"
+            class="social-icon"
+            aria-label="Facebook"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a
+            href="https://www.instagram.com/sherlock_rio/"
+            target="_blank"
+            class="social-icon"
+            aria-label="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a
+            href="https://www.youtube.com/@SherlockRio"
+            target="_blank"
+            class="social-icon"
+            aria-label="YouTube"
+            ><i class="fab fa-youtube"></i
+          ></a>
+          <a
+            href="https://abre.ai/zapsherlock"
+            target="_blank"
+            class="social-icon"
+            aria-label="WhatsApp"
+            ><i class="fab fa-whatsapp"></i
+          ></a>
         </div>
+      </header>
 
-        <div id="searchResults">
-            <div id="eventCarousel" class="carousel"></div>
+      <div class="filters">
+        <select id="filterDay" aria-label="Filtrar por dia">
+          <option value="">DIA</option>
+          <option value="2a feira">2ª feira</option>
+          <option value="3a feira">3ª feira</option>
+          <option value="4a feira">4ª feira</option>
+          <option value="5a feira">5ª feira</option>
+          <option value="6a feira">6ª feira</option>
+          <option value="Sábado">Sábado</option>
+          <option value="Domingo">Domingo</option>
+        </select>
+        <select id="filterTime" aria-label="Filtrar por horário">
+          <option value="">HORÁRIO</option>
+          <option value="Manhã">Manhã</option>
+          <option value="Tarde">Tarde</option>
+          <option value="Noite">Noite</option>
+        </select>
+        <select id="filterLocation" aria-label="Filtrar por local">
+          <option value="">LOCAL</option>
+          <option value="Zona Sul">Zona Sul</option>
+          <option value="Zona Norte">Zona Norte</option>
+          <option value="Zona Oeste">Zona Oeste</option>
+          <option value="Centro">Centro</option>
+        </select>
+        <select id="filterValue" aria-label="Filtrar por valor">
+          <option value="">VALOR</option>
+          <option value="Pago">Pago</option>
+          <option value="Gratuito">Gratuito</option>
+        </select>
+      </div>
+
+      <div id="searchResults">
+        <div id="eventCarousel" class="carousel"></div>
+        <noscript
+          ><p>
+            Por favor, habilite o JavaScript para visualizar os eventos.
+          </p></noscript
+        >
+      </div>
+
+      <footer class="new-footer">
+        <div id="footerTopLeft" class="footer-section">
+          <img
+            src="https://i.imgur.com/SAidmdv.png"
+            alt="Megafone"
+            id="footerLogo"
+          />
         </div>
-
-        <!-- FOOTER DINÂMICO -->
-        <footer class="new-footer">
-            <div id="footerTopLeft" class="footer-section">
-                <img id="advertiser-logo" src="" alt="Logo do anunciante">
-            </div>
-            <div id="footerTopRight" class="footer-section">
-                <div class="advertiser-info" id="advertiser-info">
-                    <h4 id="advertiser-name">Selecione uma região</h4>
-                    <p id="advertiser-description">Para ver o anunciante master</p>
-                    <p><a id="advertiser-site" href="#" target="_blank" style="color: #006400; text-decoration: none;"></a></p>
-                </div>
-            </div>
-            <div id="footerBottomLeft" class="footer-section">
-                <p>Selecione um LOCAL e veja ao lado<br>um mapa com todos os anunciantes</p>
-            </div>
-            <div id="footerBottomRight" class="footer-section">
-                <img src="https://i.ibb.co/533gcXw/centro.png " id="location-icon" alt="Ícone de localização">
-                <iframe id="google-maps" src=""></iframe>
-            </div>
-        </footer>
+        <div id="footerTopRight" class="footer-section">
+          <p id="footerInfo">
+            Clicando no filtro LOCAL você verá aqui<br />
+            o principal anunciante da região selecionada
+          </p>
+        </div>
+        <div id="footerBottomLeft" class="footer-section">
+          <p id="footerMapText">
+            Selecione um LOCAL e veja ao lado um mapa<br />
+            com todos os anunciantes da região
+          </p>
+        </div>
+        <div id="footerBottomRight" class="footer-section">
+          <img
+            src="https://i.imgur.com/FBIdSTA.png"
+            alt="Ícone de Localização"
+            id="location-icon"
+          />
+          <iframe id="google-maps"></iframe>
+        </div>
+      </footer>
     </div>
 
-    <script>
-        // Dados dos anunciantes master por região
-        const anunciantesMaster = {
-            "Centro": {
-                nome: "ATELIÊ CIRO FERNANDES (Lapa)",
-                descricao: "Ateliê de xilogravura",
-                logo: "https://i.imgur.com/SAidmdv.png ",
-                site: {
-                    texto: "Instagram",
-                    url: "https://www.instagram.com/cirofernandesxilo/ "
-                }
-            },
-            "Zona Norte": {
-                nome: "LIVRARIA BELLE ÉPOQUE (Méier)",
-                descricao: "Sebo e livraria",
-                logo: "https://i.imgur.com/SAidmdv.png ",
-                site: {
-                    texto: "Instagram",
-                    url: "https://www.instagram.com/livrariabelleepoque/ "
-                }
-            },
-            "Zona Sul": {
-                nome: "CASA DO ARTESÃO (Ipanema)",
-                descricao: "Espaço cultural e de compras",
-                logo: "https://i.imgur.com/SAidmdv.png ",
-                site: {
-                    texto: "Instagram",
-                    url: "https://www.instagram.com/casadoartesao/ "
-                }
-            },
-            "Zona Oeste": {
-                nome: "LABORATÓRIO PEDRO ÁLVAREZ (Barra)",
-                descricao: "Ateliê de arte e design",
-                logo: "https://i.imgur.com/SAidmdv.png ",
-                site: {
-                    texto: "Instagram",
-                    url: "https://www.instagram.com/pedroalvarez/ "
-                }
-            }
-        };
-
-        // Função para atualizar o footer dinâmico
-        function atualizarFooterDinamico() {
-            const regiao = document.getElementById("filterLocation").value;
-
-            if (!regiao) return;
-
-            const anunciante = anunciantesMaster[regiao];
-
-            // Atualizar logo do anunciante
-            const logo = document.getElementById("advertiser-logo");
-            logo.src = anunciante.logo;
-            logo.alt = anunciante.nome;
-
-            // Atualizar nome e descrição
-            document.getElementById("advertiser-name").textContent = anunciante.nome;
-            document.getElementById("advertiser-description").textContent = anunciante.descricao;
-
-            // Atualizar link do site
-            const linkSite = document.getElementById("advertiser-site");
-            linkSite.textContent = anunciante.site.texto;
-            linkSite.href = anunciante.site.url;
-
-            // Atualizar mapa da região
-            const googleMaps = document.getElementById("google-maps");
-            const mapLinks = {
-                "Centro": "https://www.google.com/maps?q=centro+rio&output=embed",
-                "Zona Norte": " https://www.google.com/maps?q=zona+norte+rio&output=embed",
-                "Zona Sul": " https://www.google.com/maps?q=zona+sul+rio&output=embed",
-                "Zona Oeste": " https://www.google.com/maps?q=zona+oeste+rio&output=embed"
-            };
-
-            if (mapLinks[regiao]) {
-                googleMaps.src = mapLinks[regiao];
-                googleMaps.style.display = "block";
-            } else {
-                googleMaps.style.display = "none";
-            }
-        }
-
-        // Atualizar ao carregar a página
-        window.addEventListener("DOMContentLoaded", function () {
-            const regiaoInicial = document.getElementById("filterLocation").value;
-            if (regiaoInicial) {
-                atualizarFooterDinamico();
-            }
-        });
-    </script>
-
-</body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
