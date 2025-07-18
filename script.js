@@ -162,7 +162,7 @@ function filtrarEventos() {
   atualizarFooter(local);
 }
 
-// Função para atualizar o footer - VERSÃO CORRIGIDA
+// Função para atualizar o footer - VERSÃO FINAL CORRIGIDA
 function atualizarFooter(localSelecionado) {
   const footerTopLeft = document.getElementById("footerTopLeft");
   const footerTopRight = document.getElementById("footerTopRight");
@@ -202,21 +202,25 @@ function atualizarFooter(localSelecionado) {
           <img src="${anuncio.mapThumbnail}" alt="Anunciantes ${anuncio.local}" class="map-thumbnail">
         </a>
       `;
-      locationIcon.style.display = "none";
 
       return;
     }
   }
 
-  // Reset para footer estático
+  // CORREÇÃO: Restaurar o footer estático COMPLETO com o ícone de localização
   footerTopLeft.innerHTML =
     '<img src="https://i.imgur.com/SAidmdv.png" alt="Megafone" id="footerLogo">';
   footerTopRight.innerHTML =
-    "Clique no filtro LOCAL para ver<br/>os principais anunciantes da região<br/>";
+    "<p>Clique no filtro LOCAL para ver</p><p>os principais anunciantes da região</p>";
   footerBottomLeft.innerHTML =
-    "Selecionando um LOCAL você encontra<br/>todos os anunciantes da região<br/>";
-  footerBottomRight.innerHTML = "";
-  locationIcon.style.display = "block";
+    "<p>Selecionando um LOCAL você encontra</p><p>todos os anunciantes da região</p>";
+  
+  // Restaurar o ícone de localização
+  footerBottomRight.innerHTML = `
+    <div id="location-icon">
+      <img src="https://i.imgur.com/SAidmdv.png" alt="Ícone de Localização">
+    </div>
+  `;
 }
 
 // Event listeners
@@ -228,4 +232,4 @@ document.getElementById("filterValue").addEventListener("change", filtrarEventos
 // Inicialização
 document.addEventListener("DOMContentLoaded", () => {
   filtrarEventos();
-});
+}); 
