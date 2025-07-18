@@ -217,7 +217,8 @@ function atualizarFooter(localSelecionado) {
      footerBottomRight.innerHTML = `
     <img src="https://i.imgur.com/9y03arB.png" alt="Ícone de Localização" id="location-icon">';
    
-}
+ }
+  }
 
 // Event listeners
 document.getElementById("filterDay").addEventListener("change", filtrarEventos);
