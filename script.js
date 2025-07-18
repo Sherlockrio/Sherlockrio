@@ -3,8 +3,7 @@ const eventos = [
   {
     titulo: "Tour na Fábrica da Three Monkeys (Local: Zona Sul)",
     link: "https://www.sympla.com.br/evento/tour-na-fabrica-da-three-monkeys/2813867?referrer=www.google.com",
-    imagem:
-      "https://images.squarespace-cdn.com/content/v1/51ef2bf2e4b02bcf8471333b/1548975653637-3OLIBQG1CMETLNT86O92/three-monkeys.jpg?format=750w",
+    imagem: "https://images.squarespace-cdn.com/content/v1/51ef2bf2e4b02bcf8471333b/1548975653637-3OLIBQG1CMETLNT86O92/three-monkeys.jpg?format=750w",
     dia: "Sábado",
     horario: "Tarde",
     local: "Zona Sul",
@@ -13,8 +12,7 @@ const eventos = [
   {
     titulo: "Rolé dos Favellados: Morro da Providência (Local: Centro)",
     link: "https://www.sympla.com.br/evento/morro-da-providencia-a-primeira-favela-role-dos-favellados-22-de-fevereiro/2828393?referrer=www.google.com",
-    imagem:
-      "https://www.cieds.org.br/storage/resized/posts/October2023-1050x/224bfa7d5901cc685ccd8be78e4cad87.png",
+    imagem: "https://www.cieds.org.br/storage/resized/posts/October2023-1050x/224bfa7d5901cc685ccd8be78e4cad87.png",
     dia: "Sábado",
     horario: "Tarde",
     local: "Centro",
@@ -23,8 +21,7 @@ const eventos = [
   {
     titulo: "Forro de Pife DESCALÇO (Local: Zona Sul)",
     link: "https://www.sympla.com.br/evento/forro-de-pife-descalco-a-moda-e-fazer-cedinho-e-descalco/2837092",
-    imagem:
-      "https://bafafa.com.br/images/artigos/forro_de_pife_rampa_21032024_065219.jpg",
+    imagem: "https://bafafa.com.br/images/artigos/forro_de_pife_rampa_21032024_065219.jpg",
     dia: "Sábado",
     horario: "Tarde",
     local: "Zona Sul",
@@ -33,8 +30,7 @@ const eventos = [
   {
     titulo: "BLACK BOM FANTASY (Local: Zona Norte)",
     link: "https://www.sympla.com.br/evento/black-bom-fantasy-22-2-renascenca-clube/2810937",
-    imagem:
-      "https://odia.ig.com.br/_midias/jpg/2024/11/22/1200x750/1_baile_black_bom_3c-34661080.jpg",
+    imagem: "https://odia.ig.com.br/_midias/jpg/2024/11/22/1200x750/1_baile_black_bom_3c-34661080.jpg",
     dia: "Sábado",
     horario: "Tarde",
     local: "Zona Norte",
@@ -149,6 +145,7 @@ function filtrarEventos() {
 
   if (nenhumFiltro) {
     criarSlides([], true);
+    atualizarFooter(null);
     return;
   }
 
@@ -165,7 +162,7 @@ function filtrarEventos() {
   atualizarFooter(local);
 }
 
-// Função para atualizar o footer - VERSÃO SIMPLIFICADA
+// Função para atualizar o footer - VERSÃO CORRIGIDA
 function atualizarFooter(localSelecionado) {
   const footerTopLeft = document.getElementById("footerTopLeft");
   const footerTopRight = document.getElementById("footerTopRight");
@@ -173,8 +170,11 @@ function atualizarFooter(localSelecionado) {
   const footerBottomRight = document.getElementById("footerBottomRight");
   const locationIcon = document.getElementById("location-icon");
 
-  // Reset de estados
-  locationIcon.style.display = "block";
+  // Limpar completamente o conteúdo antes de atualizar
+  footerTopLeft.innerHTML = '';
+  footerTopRight.innerHTML = '';
+  footerBottomLeft.innerHTML = '';
+  footerBottomRight.innerHTML = '';
 
   if (localSelecionado) {
     const anuncio = anuncios.find((a) => a.local === localSelecionado);
@@ -195,7 +195,7 @@ function atualizarFooter(localSelecionado) {
       // Inferior Esquerdo - Texto do mapa
       footerBottomLeft.innerHTML = `Veja todos os anunciantes<br/>da região ${anuncio.local}<br/><br/>Clique na imagem ao lado`;
 
-      // INFERIOR DIREITO - Miniatura clicável
+      // Inferior Direito - Miniatura clicável
       const paginaRegiao = localSelecionado.toLowerCase().replace(' ', '-') + '.html';
       footerBottomRight.innerHTML = `
         <a href="${paginaRegiao}" class="map-link">
@@ -221,13 +221,9 @@ function atualizarFooter(localSelecionado) {
 
 // Event listeners
 document.getElementById("filterDay").addEventListener("change", filtrarEventos);
-document
-  .getElementById("filterTime")
-  .addEventListener("change", filtrarEventos);
+document.getElementById("filterTime").addEventListener("change", filtrarEventos);
 document.getElementById("filterLocation").addEventListener("change", filtrarEventos);
-document
-  .getElementById("filterValue")
-  .addEventListener("change", filtrarEventos);
+document.getElementById("filterValue").addEventListener("change", filtrarEventos);
 
 // Inicialização
 document.addEventListener("DOMContentLoaded", () => {
