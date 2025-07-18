@@ -214,13 +214,9 @@ function atualizarFooter(localSelecionado) {
     "Clique no filtro LOCAL para ver<br/>os principais anunciantes da região<br/>";
   footerBottomLeft.innerHTML =
     "Selecionando um LOCAL você encontra<br/>todos os anunciantes da região<br/>";
-  
-  // Restaurar o ícone de localização
-  footerBottomRight.innerHTML = `
-    <div id="location-icon">
-      <img src="https://i.imgur.com/SAidmdv.png" alt="Ícone de Localização">
-    </div>
-  `;
+     footerBottomRight.innerHTML = `
+    <img src="https://i.imgur.com/SAidmdv.png" alt="Ícone de Localização" id="location-icon">';
+   
 }
 
 // Event listeners
