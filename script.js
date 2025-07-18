@@ -224,9 +224,7 @@ document.getElementById("filterDay").addEventListener("change", filtrarEventos);
 document
   .getElementById("filterTime")
   .addEventListener("change", filtrarEventos);
-document
-  .getElementById("filterLocation")
-  .addEventListener("change", filtrarEventos);
+document.getElementById("filterLocation").addEventListener("change", filtrarEventos);
 document
   .getElementById("filterValue")
   .addEventListener("change", filtrarEventos);
