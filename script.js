@@ -169,6 +169,7 @@ function atualizarFooter(localSelecionado) {
   const footerBottomLeft = document.getElementById("footerBottomLeft");
   const footerBottomRight = document.getElementById("footerBottomRight");
 
+  // Limpa apenas as seções necessárias
   footerTopLeft.innerHTML = '';
   footerTopRight.innerHTML = '';
   footerBottomLeft.innerHTML = '';
@@ -177,8 +178,10 @@ function atualizarFooter(localSelecionado) {
     const anuncio = anuncios.find((a) => a.local === localSelecionado);
 
     if (anuncio) {
+      // Topo Esquerdo - Logo do anunciante
       footerTopLeft.innerHTML = `<img src="${anuncio.logo}" alt="${anuncio.info[0]}" class="advertiser-logo">`;
 
+      // Topo Direito - Informações do anunciante
       footerTopRight.innerHTML = `
         <div class="advertiser-info">
           <h4><a href="${anuncio.site}" target="_blank">${anuncio.info[0]}</a></h4>
@@ -187,25 +190,36 @@ function atualizarFooter(localSelecionado) {
         </div>
       `;
 
+      // Inferior Esquerdo - Texto do mapa
       footerBottomLeft.innerHTML = `Veja todos os anunciantes<br/>da região ${anuncio.local}<br/><br/>Clique na imagem ao lado`;
 
+      // Inferior Direito - Miniatura clicável
       const paginaRegiao = localSelecionado.toLowerCase().replace(' ', '-') + '.html';
       footerBottomRight.innerHTML = `
         <a href="${paginaRegiao}" class="map-link">
           <img src="${anuncio.mapThumbnail}" alt="Anunciantes ${anuncio.local}" class="map-thumbnail">
         </a>
       `;
-
-      return;
     }
+  } else {
+    // Restaura o conteúdo padrão do footer
+    footerTopLeft.innerHTML =
+      '<img src="https://i.imgur.com/SAidmdv.png " alt="Megafone" id="footerLogo">';
+    footerTopRight.innerHTML =
+      "Clique no filtro LOCAL para ver<br/>os principais anunciantes da região<br/>";
+    footerBottomLeft.innerHTML =
+      "Selecionando um LOCAL você encontra<br/>todos os anunciantes da região<br/>";
+    // O ícone de localização permanece no HTML, então não recriamos aqui
   }
-
-  // Restaura o conteúdo padrão do footer (sem limpar o ícone)
-  footerTopLeft.innerHTML =
-    '<img src="https://i.imgur.com/SAidmdv.png " alt="Megafone" id="footerLogo">';
-  footerTopRight.innerHTML =
-    "Clique no filtro LOCAL para ver<br/>os principais anunciantes da região<br/>";
-  footerBottomLeft.innerHTML =
-    "Selecionando um LOCAL você encontra<br/>todos os anunciantes da região<br/>";
-  // O ícone de localização permanece no HTML, então não recriamos aqui
 }
+
+// Event listeners
+document.getElementById("filterDay").addEventListener("change", filtrarEventos);
+document.getElementById("filterTime").addEventListener("change", filtrarEventos);
+document.getElementById("filterLocation").addEventListener("change", filtrarEventos);
+document.getElementById("filterValue").addEventListener("change", filtrarEventos);
+
+// Inicialização
+document.addEventListener("DOMContentLoaded", () => {
+  filtrarEventos();
+});
