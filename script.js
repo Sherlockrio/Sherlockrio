@@ -211,7 +211,7 @@ function atualizarFooter(localSelecionado) {
   footerTopLeft.innerHTML =
     '<img src="https://i.imgur.com/SAidmdv.png" alt="Megafone" id="footerLogo">';
   footerTopRight.innerHTML =
-    "Clique no filtro LOCAL para ver<br/><br/os principais anunciantes da região<br/>";
+    "Clique no filtro LOCAL para ver<br/><br/>os principais anunciantes da região<br/>";
   footerBottomLeft.innerHTML =
     "Selecionando um LOCAL você encontra<br/><br/>todos os anunciantes da região<br/>";
   footerBottomRight.innerHTML = 
