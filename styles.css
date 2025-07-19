@@ -329,6 +329,15 @@ select:focus {
   text-decoration: underline;
 }
 
+    /* SOLUÇÃO: Diminuir a fonte apenas no canto superior direito */
+    #footerTopRight .advertiser-info {
+      font-size: 11px !important; /* Tamanho reduzido */
+    }
+    
+    #footerTopRight .advertiser-info h4 {
+      font-size: 11px !important; /* Tamanho reduzido para títulos também */
+    }
+
 /* RESPONSIVO PARA MOBILE */
 @media (max-width: 600px) {
   .header-image {
@@ -363,6 +372,15 @@ select:focus {
   .advertiser-info h4 {
     font-size: 12px;
   }
+
+      /* Ajuste para a solução em mobile */
+      #footerTopRight .advertiser-info {
+        font-size: 10px !important; /* Tamanho ainda menor em mobile */
+      }
+      
+      #footerTopRight .advertiser-info h4 {
+        font-size: 10px !important; /* Tamanho ainda menor em mobile */
+      }
 }
 
 /* ===== NOVOS ESTILOS ===== */
