@@ -267,7 +267,7 @@ select:focus {
   justify-content: center;
   align-items: center;
   min-height: 80px;
-  overflow: visible;
+  overflow: hidden;
   border-radius: 8px;
   border: 1px solid #ddd;
 }
