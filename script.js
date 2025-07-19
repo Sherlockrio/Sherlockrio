@@ -218,7 +218,7 @@ function atualizarFooter(localSelecionado) {
   // Restaurar o ícone de localização
   footerBottomRight.innerHTML = `
     <div id="location-icon">
-      <img src="https://i.imgur.com/SAidmdv.png" alt="Ícone de Localização">
+      <img src="https://i.imgur.com/FBIdSTA.png" alt="Ícone de Localização">
     </div>
   `;
 }
