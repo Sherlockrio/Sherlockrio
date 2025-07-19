@@ -1,3 +1,5 @@
+CSS
+
 body {
   background-color: black;
   color: white;
@@ -267,7 +269,7 @@ select:focus {
   justify-content: center;
   align-items: center;
   min-height: 80px;
-  overflow: visible;
+  overflow: hidden;
   border-radius: 8px;
   border: 1px solid #ddd;
 }
@@ -279,15 +281,15 @@ select:focus {
 }
 
 #location-icon {
-  width: 40px;
-  height: 40px;
-  display: block;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 10;
 }
-
 
 #advertiser-logo {
   width: 100px;
