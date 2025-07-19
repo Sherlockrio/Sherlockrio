@@ -215,7 +215,7 @@ function atualizarFooter(localSelecionado) {
   footerBottomLeft.innerHTML =
     "Selecionando um LOCAL você encontra<br/>todos os anunciantes da região<br/>";
   footerBottomRight.innerHTML = 
-    `<div id="location-icon">
+    `<div class="location-icon">
       <img src="https://i.imgur.com/SAidmdv.png" alt="Ícone de Localização">
     </div>
   `;
