@@ -279,15 +279,15 @@ select:focus {
 }
 
 #location-icon {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
+  width: 40px;
+  height: 40px;
+  display: block;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 10px;
+  right: 10px;
   z-index: 10;
 }
+
 
 #advertiser-logo {
   width: 100px;
