@@ -1,6 +1,3 @@
-SCRIPT:
-
-
 // Dados completos dos eventos
 const eventos = [
   {
