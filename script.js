@@ -213,7 +213,7 @@ function atualizarFooter(localSelecionado) {
   footerTopRight.innerHTML =
     "Clique no filtro LOCAL para ver<br/>os principais anunciantes da região<br/>";
   footerBottomLeft.innerHTML =
-    "Selecionando um LOCAL você encontra<br/>todos os anunciantes da região<br/>";
+    "Selecionando um LOCAL você encontra<br/><br/>todos os anunciantes da região<br/>";
   footerBottomRight.innerHTML = 
     `<img src="https://i.imgur.com/FBIdSTA.png" alt="Ícone de Localização" id="location-icon">`;
 }
