@@ -565,3 +565,17 @@ body.region-page {
         max-width: 300px; /* Menor em telas menores */
     }
 } 
+
+/* IGUALA O TAMANHO DAS FONTES DAS DUAS DIVISÕES */
+#footerTopRight,
+#footerTopRight .advertiser-info,
+#footerTopRight .advertiser-info * {
+  font-size: 13px !important;
+  line-height: 1.3 !important;
+}
+
+#footerBottomLeft,
+#footerBottomLeft p {
+  font-size: 13px !important;
+  line-height: 1.3 !important;
+}
