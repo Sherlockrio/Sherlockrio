@@ -247,9 +247,9 @@ select:focus {
 #footerTopRight {
   grid-column: 2;
   grid-row: 1;
-  text-align: center;
+  text-align: left; /* Alterado para melhor legibilidade */
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start; /* Alinhar ao topo */
   padding: 8px 12px;
 }
 
@@ -295,6 +295,7 @@ select:focus {
   object-fit: contain;
 }
 
+/* ESTILOS GERAIS PARA TEXTOS DO FOOTER */
 #footerTopRight p,
 #footerBottomLeft p {
   margin: 0;
@@ -329,13 +330,33 @@ select:focus {
   text-decoration: underline;
 }
 
-/* Iguala o tamanho da fonte na divisão superior direita à inferior esquerda */
+/* SOLUÇÃO INFALÍVEL PARA O FOOTER SUPERIOR DIREITO */
+#footerTopRight .advertiser-info {
+  font-size: 13px !important;
+  line-height: 1.3 !important;
+}
+
 #footerTopRight .advertiser-info,
-#footerTopRight .advertiser-info p,
-#footerTopRight .advertiser-info h4,
+#footerTopRight .advertiser-info * {
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+
+#footerTopRight .advertiser-info h4 {
+  margin: 0 0 5px 0;
+  font-weight: bold;
+  font-size: inherit !important;
+}
+
+#footerTopRight .advertiser-info p {
+  margin: 0 0 5px 0;
+  font-size: inherit !important;
+}
+
 #footerTopRight .advertiser-info a {
-  font-size: 13px !important; /* Igual à divisão inferior esquerda */
-  line-height: 1.3 !important; /* Mesmo espaçamento */
+  color: #ffcc00;
+  text-decoration: underline;
+  font-size: inherit !important;
 }
 
 /* RESPONSIVO PARA MOBILE */
@@ -363,6 +384,7 @@ select:focus {
     height: 80px;
   }
 
+  /* Ajuste geral de fonte para mobile */
   #footerTopRight p,
   #footerBottomLeft p,
   .advertiser-info {
@@ -373,14 +395,15 @@ select:focus {
     font-size: 12px;
   }
 
-
-  /* ADICIONE ESTAS NOVAS LINHAS */
-  #footerTopRight .advertiser-info,
-  #footerTopRight .advertiser-info p,
-  #footerTopRight .advertiser-info h4,
-  #footerTopRight .advertiser-info a {
+  /* SOLUÇÃO ESPECÍFICA PARA MOBILE */
+  #footerTopRight .advertiser-info {
     font-size: 12px !important;
     line-height: 1.3 !important;
+  }
+  
+  #footerTopRight .advertiser-info * {
+    font-size: inherit !important;
+    line-height: inherit !important;
   }
 }
 
@@ -541,20 +564,4 @@ body.region-page {
     .foto-anunciante {
         max-width: 300px; /* Menor em telas menores */
     }
-}
-
-
-/* ===== CORREÇÃO DEFINITIVA PARA O FOOTER ===== */
-#footerTopRight .advertiser-info,
-#footerTopRight .advertiser-info * {
-  font-size: 13px !important;
-  line-height: 1.3 !important;
-}
-
-@media (max-width: 600px) {
-  #footerTopRight .advertiser-info,
-  #footerTopRight .advertiser-info * {
-    font-size: 12px !important;
-    line-height: 1.3 !important;
-  }
-}
+} 
