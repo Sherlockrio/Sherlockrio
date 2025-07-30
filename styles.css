@@ -247,7 +247,7 @@ select:focus {
 #footerTopRight {
   grid-column: 2;
   grid-row: 1;
-  text-align: center; /* Alterado para melhor legibilidade */
+  text-align: left; /* Alterado para melhor legibilidade */
   justify-content: flex-start;
   align-items: flex-start; /* Alinhar ao topo */
   padding: 8px 12px;
@@ -262,7 +262,7 @@ select:focus {
   grid-column: 2;
   grid-row: 2;
   position: relative;
-  padding: 20;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
